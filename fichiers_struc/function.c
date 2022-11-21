@@ -63,20 +63,45 @@ int parse_tab(char *namefile)
     entry **result = NULL;
     entry *tmp;
     int select = 0;
+    int length_tab;
+    int good_var = 0;
 
     file = fopen(namefile, "r");
                                                     //boucle
-    tmp = get_line(file);
-    result = add_tab(result, tmp);
-    printf("Rentrer l'id de l'utilisateur: ");
-    fflush( stdout );
-    scanf("%d", &select);
-    if(select >= tab_length(result))
+    do
     {
-        printf("Utilisateur introuvable\n");
-        return 1;
+        tmp = get_line(file);
+        result = add_tab(result, tmp);
     }
-    print_entry(result[select]);			
+    while(!feof(file));
+
+    length_tab = tab_length(result);
+
+    printf("Il y a %d utilisateurs dans la base de donnée\n", length_tab);
+
+    while(!good_var)
+    {
+        printf("\n");
+        printf("Rentrer l'id de l'utilisateur: ");
+        fflush( stdout );
+        scanf("%d", &select);
+        if(select >= length_tab || select < 0)
+        {
+            printf("\n");
+            printf("---Utilisateur introuvable---\n");
+            printf("\n");
+        }
+        else
+        {
+            printf("\n");
+            printf("--------------------------------------------\n");
+            print_entry(result[select]);
+            printf("--------------------------------------------\n");
+           	good_var = 1;
+        }
+         
+    }
+    			
 
     fclose(file);
 }
