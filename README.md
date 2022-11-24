@@ -22,4 +22,4 @@ On doit pouvoir modifier le fichier tout en gardant la cohérence de celui ci.\
 - Afficher les clients où il manque des données
 - Sauvegarde du fichier
 
-Affichage dans la console MAIS si le projet a de l'avance faire une GUI (optionnel)
+Affichage dans la console MAIS si le projet a de l'avance faire une GUI (optionnel).
