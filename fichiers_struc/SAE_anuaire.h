@@ -5,8 +5,8 @@
 typedef struct entry_
 {
     //tous les critères
-    char * lastname;
-    char * firstname;
+	char * lastname;
+	char * firstname;
     char * zipcode;
     char * city;
     char * phone;

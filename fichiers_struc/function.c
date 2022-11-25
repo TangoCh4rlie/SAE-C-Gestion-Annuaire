@@ -100,8 +100,7 @@ int parse_tab(char *namefile)
            	good_var = 1;
         }
          
-    }
-    			
+    }		
 
     fclose(file);
 }
