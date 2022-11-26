@@ -4,7 +4,7 @@
 
 typedef struct entry_
 {
-    //tous les critères
+	//all criteria
 	char * lastname;
 	char * firstname;
     char * zipcode;
@@ -13,6 +13,8 @@ typedef struct entry_
     char * mail;
     char * job;
 } entry;
+
+entry **result_tab = NULL;
 
 char *get_string(FILE * file);
 
@@ -24,4 +26,10 @@ int tab_length(entry **tab);
 
 entry **add_tab(entry **tab, entry *to_tab);
 
-int parse_tab(char *namefile);
+int parse_tab(char *filename);
+
+char **get_all_mail(entry **tab);
+
+entry **del_line_tab(entry **tab, int to_del);
+
+int print_user_line_asked();

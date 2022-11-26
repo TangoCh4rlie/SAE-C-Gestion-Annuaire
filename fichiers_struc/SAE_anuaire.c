@@ -12,8 +12,23 @@ int main(int argc, char **argv)
         printf("Le fichier spécifié n'a pas pu être trouvé\n");
         return 1;
     }
-    parse_tab(argv[1]);						//appelle la fonction stocktabkleau
-                                           //check le nombre d'arg stocké dans le argc puis fonction check si le fichier de argv[1] existe
+    parse_tab(argv[1]);
+
+	//check le nombre d'arg stocké dans le argc puis fonction check si le fichier de argv[1] existe
+
+
+
+//	char filename;
+//	printf("Entrez le nom du fichier à ouvrir: ");
+//	scanf("%s", filename);
+//    if(access(filename, F_OK) == 1)
+//    {
+//        printf("Le fichier spécifié n'a pas pu être trouvé\n");
+//        return 1;
+//    }
+//	printf("test");
+//	parse_tab(filename);
+//	printf("Fin du programme\n");
 
     return 0;
 }
