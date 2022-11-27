@@ -1,6 +1,8 @@
+#pragma once
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 
 typedef struct entry_
 {
@@ -13,8 +15,6 @@ typedef struct entry_
     char * mail;
     char * job;
 } entry;
-
-entry **result_tab = NULL;
 
 char *get_string(FILE * file);
 
@@ -31,5 +31,7 @@ int parse_tab(char *filename);
 char **get_all_mail(entry **tab);
 
 entry **del_line_tab(entry **tab, int to_del);
+
+char **check_email_not_same(entry **tab);
 
 int print_user_line_asked();

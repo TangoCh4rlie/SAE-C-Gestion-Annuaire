@@ -1,7 +1,5 @@
 #include "SAE_anuaire.h"
 
-extern entry **result_tab;
-
 char *get_string(FILE * file)
 {
 
@@ -45,7 +43,6 @@ entry *get_line(FILE * file)
     return result_tab;                                      //créer fonction () qui check
 }
 
-														//fonction ouverture de fichier
 void print_entry(entry *to_print)
 {
     printf("Nom: %s\n", to_print->lastname);
@@ -64,9 +61,11 @@ int parse_tab(char *filename)
 
 
     entry *tmp;
+	entry **result_tab = NULL;
     int select = 0;
     int length_tab;
     int good_var = 0;
+	char *result_mail;
 
     file = fopen(filename, "r");
                                                     //boucle
@@ -81,8 +80,32 @@ int parse_tab(char *filename)
 
     printf("Il y a %d utilisateurs dans la base de donnée\n", length_tab);
 
-	print_user_line_asked();
+//	print_user_line_asked();
 
+	while(!good_var)
+	{
+		printf("\n");
+		printf("Rentrer l'id de l'utilisateur: ");
+		fflush( stdout );
+		scanf("%d", &select);
+		if(select >= length_tab || select < 0)
+		{
+			printf("\n");
+			printf("---Utilisateur introuvable---");
+			printf("\n");
+		}
+		else
+		{
+			printf("\n");
+			printf("--------------------------------------------\n");
+			print_entry(result_tab[select-1]);
+			printf("--------------------------------------------\n");
+			good_var = 1;
+		}
+
+	}
+
+	check_email_not_same(result_tab);
 
     fclose(file);
 }
@@ -106,7 +129,6 @@ entry **del_line_tab(entry **tab, int to_del)
 	return tab;
 }
 
-
 char **get_all_mail(entry **tab)
 {
 	int i;
@@ -120,6 +142,33 @@ char **get_all_mail(entry **tab)
 	{
 		result_tab[i] = tab[i]->mail;
 		printf("%s\n", result_tab[i]);
+		i++;
+	}
+	return result_tab;
+}
+
+char **check_email_not_same(entry **tab)
+{
+	int i;
+	int j;
+	int length_tab;
+	char **result_tab;
+
+	length_tab = tab_length(tab);
+	result_tab = malloc(sizeof(char *) * length_tab);
+
+	i = 0;
+	while(i < length_tab)
+	{
+		j = 0;
+		while(j < length_tab)
+		{
+			if(strcmp(tab[i]->mail, tab[j]->mail) == 0 && i != j)
+			{
+				printf("L'email %s est le meme ligne %d et ligne %d\n", tab[i]->mail, i, j);
+			}
+			j++;
+		}
 		i++;
 	}
 	return result_tab;
