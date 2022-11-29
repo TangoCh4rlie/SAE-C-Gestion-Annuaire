@@ -43,15 +43,15 @@ entry *get_line(FILE * file)
     return result_tab;                                      //créer fonction () qui check
 }
 
-void print_entry(entry *to_print)
+void print_entry(entry **to_print, int line)
 {
-    printf("Nom: %s\n", to_print->lastname);
-    printf("Prenom: %s\n", to_print->firstname);
-    printf("Code postal: %s\n", to_print->zipcode);
-    printf("Ville: %s\n", to_print->city);
-    printf("Téléphone: %s\n", to_print->phone);
-    printf("Mail: %s\n", to_print->mail);
-    printf("Profession: %s\n", to_print->job);
+    printf("Nom: %s\n", to_print[line]->lastname);
+    printf("Prenom: %s\n", to_print[line]->firstname);
+    printf("Code postal: %s\n", to_print[line]->zipcode);
+    printf("Ville: %s\n", to_print[line]->city);
+    printf("Téléphone: %s\n", to_print[line]->phone);
+    printf("Mail: %s\n", to_print[line]->mail);
+    printf("Profession: %s\n", to_print[line]->job);
 }
 
 entry **parse_tab(char *filename)
@@ -91,6 +91,9 @@ entry **del_line_tab(entry **tab, int to_del)
 		}
 		tab = realloc(tab, sizeof(entry *) * (length - 1));
 	}
+	printf("\n");
+	printf("Ligne supprimé avec succès!");
+
 	return tab;
 }
 
@@ -112,17 +115,13 @@ char **get_all_mail(entry **tab)
 	return result_tab;
 }
 
-char **check_email_not_same(entry **tab)
+void **check_email_not_same(entry **tab)
 {
 	int i;
 	int j;
-	int k;
 	int length_tab;
-	char *checked_mail;
-	char **result_tab;
 
 	length_tab = tab_length(tab);
-	result_tab = malloc(sizeof(char *) * length_tab);
 
 	i = 0;
 	while(i < length_tab)
@@ -138,5 +137,16 @@ char **check_email_not_same(entry **tab)
 		}
 		i++;
 	}
-	return result_tab;
+	return 0;
+}
+
+void print_user_line (entry **tab)
+{
+	int user_line = 0;
+
+	printf("Quel utilisateur voulez vous afficher : ");
+	fflush( stdout );
+	scanf("%d", &user_line);
+	printf("\n");
+	print_entry(tab, user_line);
 }

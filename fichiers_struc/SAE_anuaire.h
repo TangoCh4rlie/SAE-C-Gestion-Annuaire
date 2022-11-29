@@ -20,7 +20,7 @@ char *get_string(FILE * file);
 
 entry *get_line(FILE * file);
 
-void print_entry(entry *to_print);
+void print_entry(entry **to_print, int line);
 
 int tab_length(entry **tab);
 
@@ -32,6 +32,6 @@ char **get_all_mail(entry **tab);
 
 entry **del_line_tab(entry **tab, int to_del);
 
-char **check_email_not_same(entry **tab);
+void **check_email_not_same(entry **tab);
 
-int print_user_line_asked();
+void print_user_line (entry **tab);
