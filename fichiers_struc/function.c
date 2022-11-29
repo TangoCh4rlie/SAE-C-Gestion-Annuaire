@@ -54,21 +54,15 @@ void print_entry(entry *to_print)
     printf("Profession: %s\n", to_print->job);
 }
 
-int parse_tab(char *filename)
+entry **parse_tab(char *filename)
 {
-
     FILE* file;
-
 
     entry *tmp;
 	entry **result_tab = NULL;
-    int select = 0;
-    int length_tab;
-    int good_var = 0;
-	char *result_mail;
 
     file = fopen(filename, "r");
-                                                    //boucle
+
     do
     {
         tmp = get_line(file);
@@ -76,38 +70,9 @@ int parse_tab(char *filename)
     }
     while(!feof(file));
 
-    length_tab = tab_length(result_tab);
-
-    printf("Il y a %d utilisateurs dans la base de donnée\n", length_tab);
-
-//	print_user_line_asked();
-
-	while(!good_var)
-	{
-		printf("\n");
-		printf("Rentrer l'id de l'utilisateur: ");
-		fflush( stdout );
-		scanf("%d", &select);
-		if(select >= length_tab || select < 0)
-		{
-			printf("\n");
-			printf("---Utilisateur introuvable---");
-			printf("\n");
-		}
-		else
-		{
-			printf("\n");
-			printf("--------------------------------------------\n");
-			print_entry(result_tab[select-1]);
-			printf("--------------------------------------------\n");
-			good_var = 1;
-		}
-
-	}
-
-	check_email_not_same(result_tab);
-
     fclose(file);
+
+	return result_tab;
 }
 
 entry **del_line_tab(entry **tab, int to_del)
@@ -151,7 +116,9 @@ char **check_email_not_same(entry **tab)
 {
 	int i;
 	int j;
+	int k;
 	int length_tab;
+	char *checked_mail;
 	char **result_tab;
 
 	length_tab = tab_length(tab);
@@ -163,9 +130,9 @@ char **check_email_not_same(entry **tab)
 		j = 0;
 		while(j < length_tab)
 		{
-			if(strcmp(tab[i]->mail, tab[j]->mail) == 0 && i != j)
+			if(strcmp(tab[i]->mail, tab[j]->mail) == 0 && i != j && i < j)
 			{
-				printf("L'email %s est le meme ligne %d et ligne %d\n", tab[i]->mail, i, j);
+					printf("L'email %s est le meme ligne %d et ligne %d\n", tab[i]->mail, i, j);
 			}
 			j++;
 		}

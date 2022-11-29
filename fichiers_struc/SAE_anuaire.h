@@ -26,7 +26,7 @@ int tab_length(entry **tab);
 
 entry **add_tab(entry **tab, entry *to_tab);
 
-int parse_tab(char *filename);
+entry **parse_tab(char *filename);
 
 char **get_all_mail(entry **tab);
 
