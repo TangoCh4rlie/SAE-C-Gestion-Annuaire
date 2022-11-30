@@ -31,6 +31,7 @@ int main(int argc, char **argv)
 		printf("2 : Supprimer un utilisateur\n");
 		printf("3 : Compter le nombre d'utilisateur dans le fichier\n");
 		printf("4 : Verifier qu'il n'y ait pas des utilisateurs avec les mêmes adresses mail\n");
+		printf("5 : Affiche tous les noms triés dans l'ordre alphabétique\n");
 		printf("12 : Quitter le programme\n");
 		printf("----------------------------------------------------------");
 		printf("\n");
@@ -59,6 +60,11 @@ int main(int argc, char **argv)
 			case 4:
 				printf("\n");
 				check_email_not_same(result_tab);
+				break;
+			
+			case 5:
+				printf("\n");
+				trier_clients_par_nom(result_tab);
 				break;
 
 			case 12:
