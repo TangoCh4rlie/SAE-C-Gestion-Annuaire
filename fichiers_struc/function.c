@@ -30,78 +30,123 @@ char *get_string(FILE * file)
 
 entry *get_line(FILE * file)
 {
-    entry *result;
-    result = malloc(sizeof(entry));
-    result->lastname = get_string(file);
-    result->firstname = get_string(file);
-    result->zipcode = get_string(file);
-    result->city = get_string(file);
-    result->phone = get_string(file);
-    result->mail = get_string(file);
-    result->job = get_string(file); 
+    entry *result_tab;
+    result_tab = malloc(sizeof(entry));
+    result_tab->lastname = get_string(file);
+    result_tab->firstname = get_string(file);
+    result_tab->zipcode = get_string(file);
+    result_tab->city = get_string(file);
+    result_tab->phone = get_string(file);
+    result_tab->mail = get_string(file);
+    result_tab->job = get_string(file);
                                                         //si mail est NULL alors free et + NULL plus message d'erreur 
-    return result;                                      //créer fonction () qui check             
+    return result_tab;                                      //créer fonction () qui check
 }
 
-														//fonction ouverture de fichier
-void print_entry(entry *to_print)
+void print_entry(entry **to_print, int line)
 {
-    printf("Nom: %s\n", to_print->lastname);
-    printf("Prenom: %s\n", to_print->firstname);
-    printf("Code postal: %s\n", to_print->zipcode);
-    printf("Ville: %s\n", to_print->city);
-    printf("Téléphone: %s\n", to_print->phone);
-    printf("Mail: %s\n", to_print->mail);
-    printf("Profession: %s\n", to_print->job);
+    printf("Nom: %s\n", to_print[line]->lastname);
+    printf("Prenom: %s\n", to_print[line]->firstname);
+    printf("Code postal: %s\n", to_print[line]->zipcode);
+    printf("Ville: %s\n", to_print[line]->city);
+    printf("Téléphone: %s\n", to_print[line]->phone);
+    printf("Mail: %s\n", to_print[line]->mail);
+    printf("Profession: %s\n", to_print[line]->job);
 }
 
-int parse_tab(char *namefile)
+entry **parse_tab(char *filename)
 {
-
     FILE* file;
 
-    entry **result = NULL;
     entry *tmp;
-    int select = 0;
-    int length_tab;
-    int good_var = 0;
+	entry **result_tab = NULL;
 
-    file = fopen(namefile, "r");
-                                                    //boucle
+    file = fopen(filename, "r");
+
     do
     {
         tmp = get_line(file);
-        result = add_tab(result, tmp);
+        result_tab = add_tab(result_tab, tmp);
     }
     while(!feof(file));
 
-    length_tab = tab_length(result);
-
-    printf("Il y a %d utilisateurs dans la base de donnée\n", length_tab);
-
-    while(!good_var)
-    {
-        printf("\n");
-        printf("Rentrer l'id de l'utilisateur: ");
-        fflush( stdout );
-        scanf("%d", &select);
-        if(select >= length_tab || select < 0)
-        {
-            printf("\n");
-            printf("---Utilisateur introuvable---\n");
-            printf("\n");
-        }
-        else
-        {
-            printf("\n");
-            printf("--------------------------------------------\n");
-            print_entry(result[select]);
-            printf("--------------------------------------------\n");
-           	good_var = 1;
-        }
-         
-    }
-    			
-
     fclose(file);
+
+	return result_tab;
+}
+
+entry **del_line_tab(entry **tab, int to_del)
+{
+	int i;
+	int length;
+
+	length = tab_length(tab);
+
+	if(to_del < length)
+	{
+		free(tab[to_del]);
+		for(i = to_del; i < length - 1; i++)
+		{
+			tab[i] = tab[i + 1];
+		}
+		tab = realloc(tab, sizeof(entry *) * (length - 1));
+	}
+	printf("\n");
+	printf("Ligne supprimé avec succès!");
+
+	return tab;
+}
+
+char **get_all_mail(entry **tab)
+{
+	int i;
+	int length_tab;
+	char **result_tab;
+
+	length_tab = tab_length(tab);
+	result_tab = malloc(sizeof(char *) * length_tab);
+	i = 0;
+	while(i < length_tab)
+	{
+		result_tab[i] = tab[i]->mail;
+		printf("%s\n", result_tab[i]);
+		i++;
+	}
+	return result_tab;
+}
+
+void **check_email_not_same(entry **tab)
+{
+	int i;
+	int j;
+	int length_tab;
+
+	length_tab = tab_length(tab);
+
+	i = 0;
+	while(i < length_tab)
+	{
+		j = 0;
+		while(j < length_tab)
+		{
+			if(strcmp(tab[i]->mail, tab[j]->mail) == 0 && i != j && i < j)
+			{
+					printf("L'email %s est le meme ligne %d et ligne %d\n", tab[i]->mail, i, j);
+			}
+			j++;
+		}
+		i++;
+	}
+	return 0;
+}
+
+void print_user_line (entry **tab)
+{
+	int user_line = 0;
+
+	printf("Quel utilisateur voulez vous afficher : ");
+	fflush( stdout );
+	scanf("%d", &user_line);
+	printf("\n");
+	print_entry(tab, user_line);
 }
