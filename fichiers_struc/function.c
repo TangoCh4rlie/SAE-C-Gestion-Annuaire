@@ -190,7 +190,7 @@ void **trier_clients_par_nom(entry **tab)
 {
 	int i;
 	int j;
-	char tmp;
+	char *tmp;
 	int length_tab;
 
 	length_tab = tab_length(tab);
@@ -203,9 +203,9 @@ void **trier_clients_par_nom(entry **tab)
 		{
 			if(strcmp(tab[i]->lastname, tab[j]->lastname) == 1 && i != j && i < j)
 			{
-					tmp=*tab[i]->lastname;
-					*tab[i]->lastname=*tab[j]->lastname;
-					*tab[j]->lastname=tmp;
+					tmp=tab[i]->lastname;
+					tab[i]->lastname=tab[j]->lastname;
+					tab[j]->lastname=tmp;
 			}
 			j++;
 		}
