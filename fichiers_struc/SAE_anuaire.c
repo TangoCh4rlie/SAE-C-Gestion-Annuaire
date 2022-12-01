@@ -22,6 +22,8 @@ int main(int argc, char **argv)
 	result_tab = parse_tab(argv[1]);
 	length_tab = tab_length(result_tab);
 
+	trier_clients_par_nom(result_tab);
+
 	while(end_program)
 	{
 		printf("\n");
