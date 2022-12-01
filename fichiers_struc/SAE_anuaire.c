@@ -24,19 +24,10 @@ int main(int argc, char **argv)
 
 	while(end_program)
 	{
-		printf("\n");
-		printf("----------------------------------------------------------\n");
-		printf("MENU\n");
-		printf("1 : Afficher un utilisateur\n");
-		printf("2 : Supprimer un utilisateur\n");
-		printf("3 : Compter le nombre d'utilisateur dans le fichier\n");
-		printf("4 : Verifier qu'il n'y ait pas des utilisateurs avec les mêmes adresses mail\n");
-		printf("12 : Quitter le programme\n");
-		printf("----------------------------------------------------------");
-		printf("\n");
-		printf("Que souhaitez vous faire : ");
+		display_menu();
+		printf("Que souhaitez vous faire -> ");
 		fflush( stdout );
-		scanf("%d", &menu_entry);
+		scanf(" %d", &menu_entry);
 
 		switch(menu_entry)
 		{
@@ -45,7 +36,7 @@ int main(int argc, char **argv)
 				break;
 
 			case 2:
-				printf("Quel utilisateur voulez vous supprimer : ");
+				printf("Quel utilisateur voulez vous supprimer -> ");
 				fflush( stdout );
 				scanf("%d", &line_to_delete);
 				del_line_tab(result_tab,line_to_delete);
