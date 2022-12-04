@@ -51,6 +51,11 @@ int main(int argc, char **argv)
 				printf("\n");
 				check_email_not_same(result_tab);
 				break;
+			
+			case 5:
+				printf("\n");
+				trier_clients_par_nom(result_tab);
+				break;
 
 			case 12:
 				printf("\n");
