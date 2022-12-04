@@ -144,7 +144,7 @@ void print_user_line (entry **tab)
 {
 	int user_line = 0;
 
-	printf("Quel utilisateur voulez vous afficher : ");
+	printf("Quel utilisateur voulez vous afficher -> ");
 	fflush( stdout );
 	scanf("%d", &user_line);
 	printf("\n");
