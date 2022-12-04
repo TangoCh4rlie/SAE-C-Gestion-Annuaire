@@ -203,7 +203,7 @@ void **trier_clients_par_nom(entry **tab)
 		j = 0;
 		while(j < length_tab)
 		{
-			if(stricmp(tab[i]->lastname, tab[j]->lastname) >= 1 && i != j && i < j)
+			if(strcmp(tab[i]->lastname, tab[j]->lastname) >= 1 && i != j && i < j)
 			{
 					tmp=tab[i];
 					tab[i]=tab[j];
