@@ -115,10 +115,11 @@ char **get_all_mail(entry **tab)
 	return result_tab;
 }
 
-void **check_email_not_same(entry **tab)
+int **check_email_not_same(entry **tab)
 {
 	int i;
 	int j;
+	int nb_of_mail = 0;
 	int length_tab;
 
 	length_tab = tab_length(tab);
@@ -131,7 +132,8 @@ void **check_email_not_same(entry **tab)
 		{
 			if(strcmp(tab[i]->mail, tab[j]->mail) == 0 && i != j && i < j && tab[i]->mail != " " && tab[j]->mail != " ")
 			{
-					printf("L'email %s est le meme ligne %d et ligne %d\n", tab[i]->mail, i++, j++);
+				printf("L'email %s est le meme ligne %d et ligne %d\n", tab[i]->mail, i, j);
+				nb_of_mail++;
 			}
 			j++;
 		}
@@ -201,7 +203,7 @@ void **trier_clients_par_nom(entry **tab)
 		j = 0;
 		while(j < length_tab)
 		{
-			if(stricmp(tab[i]->lastname, tab[j]->lastname) >= 1 && i != j && i < j)
+			if(strcmp(tab[i]->lastname, tab[j]->lastname) >= 1 && i != j && i < j)
 			{
 					tmp=tab[i];
 					tab[i]=tab[j];

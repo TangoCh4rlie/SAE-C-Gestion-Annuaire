@@ -32,8 +32,10 @@ char **get_all_mail(entry **tab);
 
 entry **del_line_tab(entry **tab, int to_del);
 
-void **check_email_not_same(entry **tab);
+int **check_email_not_same(entry **tab);
 
 void print_user_line (entry **tab);
+
+void **trier_clients_par_nom(entry **tab);
 
 void display_menu();
