@@ -39,3 +39,5 @@ void print_user_line (entry **tab);
 void **trier_clients_par_nom(entry **tab);
 
 void display_menu();
+
+char **get_all_mail_UwU(entry **tab);

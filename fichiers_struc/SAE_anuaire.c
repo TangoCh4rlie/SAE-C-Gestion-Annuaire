@@ -57,6 +57,11 @@ int main(int argc, char **argv)
 				trier_clients_par_nom(result_tab);
 				break;
 
+			case 6:
+				printf("\n");
+				get_all_mail_UwU(result_tab);
+				break;
+
 			case 12:
 				printf("\n");
 				printf("Fin du programme...");

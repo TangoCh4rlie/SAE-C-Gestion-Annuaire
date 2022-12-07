@@ -35,6 +35,7 @@ void display_menu()
 	printf("3 : Compter le nombre d'utilisateur dans le fichier\n");
 	printf("4 : Verifier qu'il n'y ait pas des utilisateurs avec les mêmes adresses mail\n");
     printf("5 : Ratio\n");
+    printf("6 : Affiche mail\n");
 	printf("12 : Quitter le programme\n");
 	printf("----------------------------------------------------------");
 	printf("\n");
