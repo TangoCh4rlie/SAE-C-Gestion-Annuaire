@@ -115,10 +115,11 @@ char **get_all_mail(entry **tab)
 	return result_tab;
 }
 
-void **check_email_not_same(entry **tab)
+int **check_email_not_same(entry **tab)
 {
 	int i;
 	int j;
+	int nb_of_mail = 0;
 	int length_tab;
 
 	length_tab = tab_length(tab);
@@ -129,9 +130,10 @@ void **check_email_not_same(entry **tab)
 		j = 0;
 		while(j < length_tab)
 		{
-			if(strcmp(tab[i]->mail, tab[j]->mail) == 0 && i != j && i < j)
+			if(strcmp(tab[i]->mail, tab[j]->mail) == 0 && i != j && i < j && tab[i]->mail != " " && tab[j]->mail != " ")
 			{
-					printf("L'email %s est le meme ligne %d et ligne %d\n", tab[i]->mail, i, j);
+				printf("L'email %s est le meme ligne %d et ligne %d\n", tab[i]->mail, i, j);
+				nb_of_mail++;
 			}
 			j++;
 		}
@@ -144,9 +146,103 @@ void print_user_line (entry **tab)
 {
 	int user_line = 0;
 
-	printf("Quel utilisateur voulez vous afficher : ");
+	printf("Quel utilisateur voulez vous afficher -> ");
 	fflush( stdout );
 	scanf("%d", &user_line);
 	printf("\n");
 	print_entry(tab, user_line);
+}
+
+void affiche_tab(entry **tab)
+{
+	int i;
+	int length_tab;
+	char **result_tab;
+
+	length_tab = tab_length(tab);
+	result_tab = malloc(sizeof(char *) * length_tab);
+	i = 0;
+	while(i < length_tab)
+	{
+		result_tab[i] = tab[i]->lastname;
+		printf("%s\n", result_tab[i]);
+		i++;
+	}
+}
+
+char **get_all_name(entry **tab)
+{
+	int i;
+	int length_tab;
+	char **result_tab;
+
+	length_tab = tab_length(tab);
+	result_tab = malloc(sizeof(char *) * length_tab);
+	i = 0;
+	while(i < length_tab)
+	{
+		result_tab[i] = tab[i]->lastname;
+		printf("%s\n", result_tab[i]);
+		i++;
+	}
+	return result_tab;
+}
+
+void **trier_clients_par_nom(entry **tab)
+{
+	int i;
+	int j;
+	char **tmp;
+	int length_tab;
+
+	length_tab = tab_length(tab);
+
+	i = 0;
+	while(i < length_tab)
+	{
+		j = 0;
+		while(j < length_tab)
+		{
+			if(stricmp(tab[i]->lastname, tab[j]->lastname) >= 1 && i != j && i < j)
+			{
+					tmp=tab[i];
+					tab[i]=tab[j];
+					tab[j]=tmp;
+			}
+			j++;
+		}
+		i++;
+	}
+	affiche_tab(tab);
+	return 0;
+}
+
+/* SI strcmp=0 alors = si strcmp=1 alors > (b>a) si strcmp=-1 alors < (a<b) */
+
+/*
+- même mail qui n'est pas le même mail
+- user_line qui affiche avec 1 de décalage
+- les users qui ont un attribut en moins sont décalés
+*/
+
+char **get_all_mail_UwU(entry **tab)
+{
+	int i;
+	int length_tab;
+	char **result_tab;
+
+	length_tab = tab_length(tab);
+	result_tab = malloc(sizeof(char *) * length_tab);
+	i = 0;
+	while(i < length_tab)
+	{
+		result_tab[i] = tab[i]->mail;
+		printf("%s\n", result_tab[i]);
+		i++;
+	}
+	return result_tab;
+}
+
+void modify_client_name(entry **tab,char ancient_mail,char new_mail){
+	if 
 }
