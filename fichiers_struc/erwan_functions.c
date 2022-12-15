@@ -22,7 +22,7 @@ void **trier_clients_par_nom(entry **tab)
 {
 	int i;
 	int j;
-	char **tmp;
+	char *tmp;
 	int length_tab;
 
 	length_tab = tab_length(tab);
