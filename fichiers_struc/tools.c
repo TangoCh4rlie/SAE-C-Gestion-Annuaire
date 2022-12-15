@@ -51,3 +51,9 @@ void print_user_line (entry **tab)
 	printf("\n");
 	print_entry_all(tab, user_line);
 }
+
+void Color12(int clrtxt,int clrfond) // fonction d'affichage de couleurs
+{
+        HANDLE H=GetStdHandle(STD_OUTPUT_HANDLE);
+        SetConsoleTextAttribute(H,clrfond*16+clrtxt);
+}

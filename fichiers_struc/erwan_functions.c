@@ -43,7 +43,15 @@ void **trier_clients_par_nom(entry **tab)
 		}
 		i++;
 	}
-	printf("Les clients ont bien été triés par nom");
+	Color12(6,0);
+	printf("Les ");
+	Color12(4,0);
+	printf("clients ");
+	Color12(6,0);
+	printf("ont bien été triés par ");
+	Color12(5,0);
+	printf("nom");
+	Color12(15,0);
 	return 0;
 }
 
