@@ -203,7 +203,7 @@ void **trier_clients_par_nom(entry **tab)
 		j = 0;
 		while(j < length_tab)
 		{
-			if(strcmp(tab[i]->lastname, tab[j]->lastname) >= 1 && i != j && i < j)
+			if(stricmp(tab[i]->lastname, tab[j]->lastname) >= 1 && i != j && i < j)
 			{
 					tmp=tab[i];
 					tab[i]=tab[j];
@@ -224,3 +224,25 @@ void **trier_clients_par_nom(entry **tab)
 - user_line qui affiche avec 1 de décalage
 - les users qui ont un attribut en moins sont décalés
 */
+
+char **get_all_mail_UwU(entry **tab)
+{
+	int i;
+	int length_tab;
+	char **result_tab;
+
+	length_tab = tab_length(tab);
+	result_tab = malloc(sizeof(char *) * length_tab);
+	i = 0;
+	while(i < length_tab)
+	{
+		result_tab[i] = tab[i]->mail;
+		printf("%s\n", result_tab[i]);
+		i++;
+	}
+	return result_tab;
+}
+
+void modify_client_name(entry **tab,char ancient_mail,char new_mail){
+	if 
+}
