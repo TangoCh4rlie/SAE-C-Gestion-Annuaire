@@ -11,9 +11,7 @@ int select_line_with_email(entry **tab, char* email)
 	{
 		cmp = strcmp(tab[i]->mail, email);
 		if (cmp == 0)
-		{
 			index_tab = i + 1;
-		}
 		i++;
 	}
 	return index_tab;
