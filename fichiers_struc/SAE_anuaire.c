@@ -70,7 +70,7 @@ int main(int argc, char **argv)
 
 			default:
 				printf("\n");
-				printf("Veuillez selectionner numéro correct\n");
+				printf("Veuillez sélectionner numéro correct\n");
 		}
 	}
 
