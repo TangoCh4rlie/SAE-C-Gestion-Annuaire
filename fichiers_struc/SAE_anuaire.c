@@ -11,12 +11,12 @@ int main(int argc, char **argv)
     if (argc == 1)
     {
         printf("Aucun fichier n'a été renseigné\n");
-        return 1;
+        return EXIT_FAILURE;
     }
     else if(access(argv[1], F_OK) == 1)
     {
         printf("Le fichier spécifié n'a pas pu être trouvé\n");
-        return 1;
+        return EXIT_FAILURE;
     }
 
 	result_tab = parse_tab(argv[1]);
@@ -74,5 +74,5 @@ int main(int argc, char **argv)
 		}
 	}
 
-    return 0;
+    return EXIT_SUCCESS;
 }

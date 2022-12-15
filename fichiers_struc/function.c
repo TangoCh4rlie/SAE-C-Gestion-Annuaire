@@ -214,7 +214,7 @@ void **trier_clients_par_nom(entry **tab)
 		i++;
 	}
 	affiche_tab(tab);
-	return 0;
+	return EXIT_SUCCESS;
 }
 
 /* SI strcmp=0 alors = si strcmp=1 alors > (b>a) si strcmp=-1 alors < (a<b) */
