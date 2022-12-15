@@ -31,7 +31,7 @@ entry **parse_tab(char *filename);
 
 char **get_all_mail(entry **tab);
 
-int select_line_with_email(entry **tab, char email);
+int select_line_with_email(entry **tab, char* email);
 
 entry **del_line_tab(entry **tab, int to_del);
 
