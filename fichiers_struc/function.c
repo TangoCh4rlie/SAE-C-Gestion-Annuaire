@@ -100,6 +100,5 @@ int **check_email_not_same(entry **tab)
 	}
 	return 0;
 }
-
 //void modify_client_name(entry **tab,char ancient_mail,char new_mail){
 //}

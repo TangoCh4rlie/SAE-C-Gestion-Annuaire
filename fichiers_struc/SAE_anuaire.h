@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <windows.h>
 
 typedef struct entry_
 {
@@ -43,3 +44,5 @@ void **trier_clients_par_nom(entry **tab);
 void display_menu();
 
 void display_tab(entry **tab);
+
+void Color12(int clrtxt,int clrfond);
