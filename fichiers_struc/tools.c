@@ -28,16 +28,16 @@ entry **add_tab(entry **tab, entry *to_tab)
 void display_menu()
 {
 	printf("\n");
-	printf("----------------------------------------------------------\n");
-	printf("MENU\n");
+	printf("------------------------------------------------------------------------------------------------------------------------\n");
+	printf("MENU\n\n");
 	printf("1 : Afficher un utilisateur\n");
 	printf("2 : Supprimer un utilisateur\n");
 	printf("3 : Compter le nombre d'utilisateur dans le fichier\n");
 	printf("4 : Verifier qu'il n'y ait pas des utilisateurs avec les mêmes adresses mail\n");
-    printf("5 : Ratio\n");
-    printf("6 : Affiche mail\n");
+    printf("5 : Trier les clients par nom\n");
+    printf("6 : Affiche tous les mails des utilisateurs présent dans la base de donnée\n");
 	printf("12 : Quitter le programme\n");
-	printf("----------------------------------------------------------");
+	printf("------------------------------------------------------------------------------------------------------------------------");
 	printf("\n");
 }
 
