@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <windows.h>
 
 typedef struct entry_
 {
@@ -20,7 +21,7 @@ char *get_string(FILE * file);
 
 entry *get_line(FILE * file);
 
-void print_entry(entry **to_print, int line);
+void print_entry_all(entry **to_print, int line);
 
 int tab_length(entry **tab);
 
@@ -29,6 +30,8 @@ entry **add_tab(entry **tab, entry *to_tab);
 entry **parse_tab(char *filename);
 
 char **get_all_mail(entry **tab);
+
+int select_line_with_email(entry **tab, char* email);
 
 entry **del_line_tab(entry **tab, int to_del);
 
@@ -40,4 +43,6 @@ void **trier_clients_par_nom(entry **tab);
 
 void display_menu();
 
-char **get_all_mail_UwU(entry **tab);
+void display_tab(entry **tab);
+
+void Color12(int clrtxt,int clrfond);

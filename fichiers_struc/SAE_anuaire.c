@@ -4,7 +4,8 @@ int main(int argc, char **argv)
 {
 	int length_tab;
 	int menu_entry;
-	int line_to_delete;
+	char user_email[100];
+	int index_tab;
 	int end_program = 1;
 	entry **result_tab;
 
@@ -36,10 +37,12 @@ int main(int argc, char **argv)
 				break;
 
 			case 2:
-				printf("Quel utilisateur voulez vous supprimer -> ");
+				printf("Quel utilisateur voulez vous supprimer (renter son adresse E-mail) -> ");
 				fflush( stdout );
-				scanf("%d", &line_to_delete);
-				del_line_tab(result_tab,line_to_delete);
+				scanf("%s", user_email);
+				index_tab = select_line_with_email(result_tab,user_email);
+				printf("\n%d", index_tab);
+				del_line_tab(result_tab, index_tab);
 				break;
 
 			case 3:
@@ -59,7 +62,7 @@ int main(int argc, char **argv)
 
 			case 6:
 				printf("\n");
-				get_all_mail_UwU(result_tab);
+				get_all_mail(result_tab);
 				break;
 
 			case 12:
