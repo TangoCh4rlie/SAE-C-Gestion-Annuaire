@@ -43,7 +43,7 @@ void display_tab(entry **tab);
 
 entry **del_line_tab(entry **tab, int to_del);
 
-entry **modify_client_mail(entry **tab, const char *old_email, const char *new_email);
+entry **modify_client_mail(entry **tab, const char *old_email, char *new_email);
 
 //Fonction du function.c
 

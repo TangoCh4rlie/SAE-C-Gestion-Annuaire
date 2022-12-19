@@ -1,10 +1,13 @@
 #include "SAE_anuaire.h"
 
+//TODO Rajouter des asserts mais questionner car kill le prog
+
 int main(int argc, char **argv)
 {
 	int length_tab;
 	int menu_entry;
 	char user_email[100];
+	char new_user_email[100];
 	int index_tab;
 	int end_program = 1;
 	entry **result_tab;
@@ -66,8 +69,14 @@ int main(int argc, char **argv)
 				break;
 
 			case 7:
+				printf("Quel email voulez vous modifier -> ");
+				fflush( stdout );
+				scanf("%s", user_email);
+				printf("Par quelle email voulez vous la remplacer -> ");
+				fflush( stdout );
+				scanf("%s", new_user_email);
 				printf("\n");
-				modify_client_mail(result_tab, "roland.lambert@server.fr", "cacaboudin");
+				modify_client_mail(result_tab, user_email, new_user_email);
 				break;
 
 			case 12:

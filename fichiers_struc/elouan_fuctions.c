@@ -22,11 +22,19 @@ entry **del_line_tab(entry **tab, int to_del)
 	return tab;
 }
 
-entry **modify_client_mail(entry **tab, const char *old_email, const char *new_email){
+//TODO VOIR POUR LES CONST
+//TODO Check si l'adresse email est valide
+entry **modify_client_mail(entry **tab, const char *old_email, char *new_email)
+{
 
 	int line_to_del;
 	line_to_del = select_line_with_email(tab, old_email);
 	tab[line_to_del - 1]->mail = new_email;
 
 	return tab;
+}
+
+entry **modify_client_fild(entry **tab, const char *old_email, const char *new_email)
+{
+
 }

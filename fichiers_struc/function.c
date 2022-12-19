@@ -74,6 +74,8 @@ entry **parse_tab(char *filename)
 	return result_tab;
 }
 
+//TODO Warnings lignes 94 pas compris
+
 int **check_email_not_same(entry **tab)
 {
 	int i;
@@ -100,5 +102,3 @@ int **check_email_not_same(entry **tab)
 	}
 	return 0;
 }
-//void modify_client_name(entry **tab,char ancient_mail,char new_mail){
-//}
