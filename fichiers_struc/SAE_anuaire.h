@@ -37,7 +37,7 @@ entry **del_line_tab(entry **tab, int to_del);
 
 int **check_email_not_same(entry **tab);
 
-void print_user_line (entry **tab);
+void print_user_line (entry **tab, int length_tab);
 
 void **trier_clients_par_nom(entry **tab);
 

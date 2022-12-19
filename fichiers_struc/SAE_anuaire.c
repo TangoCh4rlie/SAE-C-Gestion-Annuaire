@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 		switch(menu_entry)
 		{
 			case 1:
-				print_user_line(result_tab);
+				print_user_line(result_tab, length_tab);
 				break;
 
 			case 2:
