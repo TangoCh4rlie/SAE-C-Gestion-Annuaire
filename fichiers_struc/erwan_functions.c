@@ -75,7 +75,7 @@ void display_tab(entry **tab)
 /* SI strcmp=0 alors = si strcmp=1 alors > (b>a) si strcmp=-1 alors < (a<b) */
 
 /*
-- même mail qui n'est pas le même mail
-- user_line qui affiche avec 1 de décalage
+TODO même mail qui n'est pas le même mail
+ TODO email pas vide
 - les users qui ont un attribut en moins sont décalés
 */

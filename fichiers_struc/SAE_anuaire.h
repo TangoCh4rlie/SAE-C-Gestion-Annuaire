@@ -46,3 +46,5 @@ void display_menu();
 void display_tab(entry **tab);
 
 void Color12(int clrtxt,int clrfond);
+
+entry **modify_client_mail(entry **tab, char *old_email, char *new_email);

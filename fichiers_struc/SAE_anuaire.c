@@ -65,6 +65,11 @@ int main(int argc, char **argv)
 				get_all_mail(result_tab);
 				break;
 
+			case 7:
+				printf("\n");
+				modify_client_mail(result_tab, "roland.lambert@server.fr", "cacaboudin");
+				break;
+
 			case 12:
 				printf("\n");
 				printf("Fin du programme...");
