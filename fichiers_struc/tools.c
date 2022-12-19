@@ -37,10 +37,9 @@ void display_menu()
 	printf("| 4 : Verifier qu'il n'y ait pas des utilisateurs avec les mêmes adresses mail     |\n");
     printf("| 5 : Trier les clients par nom                                                    |\n");
     printf("| 6 : Affiche tous les mails des utilisateurs présent dans la base de donnée       |\n");
-	printf("| 7 : Changer l'email d'un utilisateur\n");
+	printf("| 7 : Changer l'email d'un utilisateur                                             |\n");
 	printf("| 12 : Quitter le programme                                                        |\n");
-	printf("------------------------------------------------------------------------------------");
-	printf("\n");
+	printf("------------------------------------------------------------------------------------\n");
 }
 
 void print_user_line (entry **tab, int length_tab)
@@ -66,7 +65,7 @@ void print_user_line (entry **tab, int length_tab)
 	print_entry_all(tab, user_line - 1);
 }
 
-int select_line_with_email(entry **tab, char* email)
+int select_line_with_email(entry **tab, const char* email)
 {
 	int i = 0;
 	int n = tab_length(tab);

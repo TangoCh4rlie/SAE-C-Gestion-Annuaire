@@ -22,7 +22,7 @@ entry **del_line_tab(entry **tab, int to_del)
 	return tab;
 }
 
-entry **modify_client_mail(entry **tab, char *old_email, char *new_email){
+entry **modify_client_mail(entry **tab, const char *old_email, const char *new_email){
 
 	int line_to_del;
 	line_to_del = select_line_with_email(tab, old_email);
