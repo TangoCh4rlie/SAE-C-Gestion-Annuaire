@@ -4,6 +4,13 @@
 
 int main(int argc, char **argv)
 {
+	FILE* fp_out;
+
+	fp_out = fopen("RESULT_FILE.csv", "w");
+	if (fp_out == NULL) {
+		perror("Error opening output file");
+	}
+
 	int length_tab;
 	int menu_entry;
 	char user_email[100];
@@ -84,6 +91,13 @@ int main(int argc, char **argv)
 				printf("\n");
 				print_entry_all(result_tab, 2);
 				printf("\n");
+				break;
+
+			case 99:
+				write_content_new_file(fp_out, length_tab, result_tab);
+				printf("\n");
+				printf("Fin du programme...");
+				end_program = 0;
 				break;
 
 			case 12:

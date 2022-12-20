@@ -39,6 +39,7 @@ void display_menu()
     printf("| 6 : Affiche tous les mails des utilisateurs présent dans la base de donnée       |\n");
 	printf("| 7 : Changer l'email d'un utilisateur                                             |\n");
 	printf("| 8 : Debug 3 first line                                                           |\n");
+	printf("| 99 : Ecrire le nouvel annuaire dans un fichier (après modifications)             |\n");
 	printf("| 12 : Quitter le programme                                                        |\n");
 	printf("------------------------------------------------------------------------------------\n");
 }

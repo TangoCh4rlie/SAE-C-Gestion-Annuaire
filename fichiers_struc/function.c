@@ -55,21 +55,21 @@ void print_entry_all(entry **to_print, int line)
 
 entry **parse_tab(char *filename)
 {
-    FILE* file;
+    FILE* file_in;
 
     entry *tmp;
 	entry **result_tab = NULL;
 
-    file = fopen(filename, "r");
+    file_in = fopen(filename, "r");
 
     do
     {
-        tmp = get_line(file);
+        tmp = get_line(file_in);
         result_tab = add_tab(result_tab, tmp);
     }
-    while(!feof(file));
+    while(!feof(file_in));
 
-    fclose(file);
+    fclose(file_in);
 
 	return result_tab;
 }
@@ -101,4 +101,11 @@ int **check_email_not_same(entry **tab)
 		i++;
 	}
 	return 0;
+}
+
+void write_content_new_file(FILE * fp_out, int length_tab, entry **result_tab)
+{
+	fwrite(result_tab, sizeof(result_tab), length_tab, fp_out);
+
+	fclose(fp_out);
 }
