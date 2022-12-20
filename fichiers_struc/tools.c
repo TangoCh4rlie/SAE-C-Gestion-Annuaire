@@ -38,6 +38,7 @@ void display_menu()
     printf("| 5 : Trier les clients par nom                                                    |\n");
     printf("| 6 : Affiche tous les mails des utilisateurs présent dans la base de donnée       |\n");
 	printf("| 7 : Changer l'email d'un utilisateur                                             |\n");
+	printf("| 8 : Debug 3 first line                                                           |\n");
 	printf("| 12 : Quitter le programme                                                        |\n");
 	printf("------------------------------------------------------------------------------------\n");
 }
@@ -69,14 +70,14 @@ int select_line_with_email(entry **tab, const char* email)
 {
 	int i = 0;
 	int n = tab_length(tab);
-	int cmp = -1;
-	int index_tab = 0;
+	int cmp;
+	int index_tab = -1;
 
 	while (i < n)
 	{
 		cmp = strcmp(tab[i]->mail, email);
 		if (cmp == 0)
-			index_tab = i + 1;
+			index_tab = i;
 		i++;
 	}
 	return index_tab;

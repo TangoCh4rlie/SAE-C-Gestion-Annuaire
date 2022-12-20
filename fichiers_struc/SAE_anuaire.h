@@ -41,7 +41,7 @@ void display_tab(entry **tab);
 
 //Fonction elouan
 
-entry **del_line_tab(entry **tab, int to_del);
+entry **del_line_tab(entry **tab, char* user_email);
 
 entry **modify_client_mail(entry **tab, const char *old_email, char *new_email);
 

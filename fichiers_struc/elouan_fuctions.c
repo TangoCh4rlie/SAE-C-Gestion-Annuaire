@@ -1,16 +1,24 @@
 #include "SAE_anuaire.h"
 
-entry **del_line_tab(entry **tab, int to_del)
+entry **del_line_tab(entry **tab, char* user_email)
 {
 	int i;
 	int length;
+	int index_to_del;
 
+	index_to_del = select_line_with_email(tab,user_email);
 	length = tab_length(tab);
 
-	if(to_del < length)
+	if (index_to_del == -1)
 	{
-		free(tab[to_del]);
-		for(i = to_del; i < length - 1; i++)
+		printf("L'utilisateur n'a pas été trouvé");
+		return tab;
+	}
+
+	if(index_to_del < length)
+	{
+		free(tab[index_to_del]);
+		for(i = index_to_del; i < length - 1; i++)
 		{
 			tab[i] = tab[i + 1];
 		}
@@ -23,13 +31,26 @@ entry **del_line_tab(entry **tab, int to_del)
 }
 
 //TODO VOIR POUR LES CONST
+//TODO Check si la première adresse est dans l'annuaire
 //TODO Check si l'adresse email est valide
 entry **modify_client_mail(entry **tab, const char *old_email, char *new_email)
 {
+	int old_email_exist;
 
-	int line_to_del;
-	line_to_del = select_line_with_email(tab, old_email);
-	tab[line_to_del - 1]->mail = new_email;
+	old_email_exist = select_line_with_email(tab,old_email);
+
+	if (old_email_exist == -1)
+	{
+		printf("L'adresse mail sélectionné n'a pas pu être trouvé, veuillez recommencer");
+		return tab;
+	}
+	else
+	{
+		int line_to_del;
+		line_to_del = select_line_with_email(tab, old_email);
+		tab[line_to_del]->mail = new_email;
+		printf("L'email a bien été changé !\n");
+	}
 
 	return tab;
 }

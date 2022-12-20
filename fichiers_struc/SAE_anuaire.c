@@ -43,9 +43,7 @@ int main(int argc, char **argv)
 				printf("Quel utilisateur voulez vous supprimer (renter son adresse E-mail) -> ");
 				fflush( stdout );
 				scanf("%s", user_email);
-				index_tab = select_line_with_email(result_tab,user_email);
-				printf("\n%d", index_tab);
-				del_line_tab(result_tab, index_tab);
+				del_line_tab(result_tab, user_email);
 				break;
 
 			case 3:
@@ -77,6 +75,16 @@ int main(int argc, char **argv)
 				scanf("%s", new_user_email);
 				printf("\n");
 				modify_client_mail(result_tab, user_email, new_user_email);
+				break;
+
+			case 8:
+				printf("\n");
+				print_entry_all(result_tab, 0);
+				printf("\n");
+				print_entry_all(result_tab, 1);
+				printf("\n");
+				print_entry_all(result_tab, 2);
+				printf("\n");
 				break;
 
 			case 12:
