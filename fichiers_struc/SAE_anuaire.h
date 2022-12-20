@@ -31,6 +31,8 @@ int select_line_with_email(entry **tab, const char* email);
 
 void Color12(int clrtxt,int clrfond);
 
+int check_email_validity(char *email);
+
 //Fonction erwan
 
 char **get_all_mail(entry **tab);

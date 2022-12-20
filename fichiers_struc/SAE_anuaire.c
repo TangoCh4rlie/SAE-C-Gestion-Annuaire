@@ -8,7 +8,6 @@ int main(int argc, char **argv)
 	int menu_entry;
 	char user_email[100];
 	char new_user_email[100];
-	int index_tab;
 	int end_program = 1;
 	entry **result_tab;
 

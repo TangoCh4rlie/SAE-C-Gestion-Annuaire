@@ -31,17 +31,32 @@ entry **del_line_tab(entry **tab, char* user_email)
 }
 
 //TODO VOIR POUR LES CONST
-//TODO Check si la première adresse est dans l'annuaire
-//TODO Check si l'adresse email est valide
 entry **modify_client_mail(entry **tab, const char *old_email, char *new_email)
 {
 	int old_email_exist;
+	int valid = check_email_validity(new_email);
 
 	old_email_exist = select_line_with_email(tab,old_email);
 
 	if (old_email_exist == -1)
 	{
 		printf("L'adresse mail sélectionné n'a pas pu être trouvé, veuillez recommencer");
+		return tab;
+	}
+	if (select_line_with_email(tab,new_email) != -1)
+	{
+		printf("L'adresse mail rentré existe déjà, veuillez recommencer");
+		return tab;
+	}
+	//TODO Faire une alocation dynamique pour la nouvelle adresse mail sinon segfault si > 100
+	if (strlen(new_email) > 100)
+	{
+		printf("L'adresse mail rentré est trop longue, veuillez recommencer");
+		return tab;
+	}
+	if (valid == 0)
+	{
+		printf("L'adresse mail rentré n'est pas valide, veuillez recommencer");
 		return tab;
 	}
 	else
@@ -55,7 +70,7 @@ entry **modify_client_mail(entry **tab, const char *old_email, char *new_email)
 	return tab;
 }
 
-entry **modify_client_fild(entry **tab, const char *old_email, const char *new_email)
+entry **modify_client_field(entry **tab, const char *old_email, const char *new_email)
 {
 
 }

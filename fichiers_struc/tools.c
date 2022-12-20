@@ -88,3 +88,38 @@ void Color12(int clrtxt,int clrfond) // fonction d'affichage de couleurs
         HANDLE H=GetStdHandle(STD_OUTPUT_HANDLE);
         SetConsoleTextAttribute(H,clrfond*16+clrtxt);
 }
+
+//TODO La fonction ne permet pas de check si il n'y a pas de points après le @ A REVOIR
+int check_email_validity(char *email)
+{
+	int i = 0;
+	int at = 0;
+	int dot = 0;
+	int dot_pos = 0;
+	unsigned int len = strlen(email);
+
+	if (email[0] == '@' || email[0] == '.')
+		return 0;
+
+	while (i < len)
+	{
+		if (email[i] == '@')
+		{
+			at++;
+		}
+		if (email[i] == '.')
+		{
+			dot++;
+			dot_pos = i;
+		}
+		i++;
+	}
+
+	if (at != 1)
+		return 0;
+
+	if (dot_pos == len - 1)
+		return 0;
+
+	return 1;
+}
