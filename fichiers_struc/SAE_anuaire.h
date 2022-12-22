@@ -47,6 +47,9 @@ entry **del_line_tab(entry **tab, char* user_email);
 
 entry **modify_client_mail(entry **tab, const char *old_email, char *new_email);
 
+entry **modify_client_field(entry **tab, const char *email, const char *field_name, char *new_var);
+
+
 //Fonction du function.c
 
 char *get_string(FILE * file);

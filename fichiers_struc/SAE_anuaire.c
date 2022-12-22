@@ -16,6 +16,8 @@ int main(int argc, char **argv)
 	char new_user_email[100];
 	int end_program = 1;
 	entry **result_tab;
+	char field[11];
+	char new_content_field[100];
 
     if (argc == 1)
     {
@@ -83,6 +85,28 @@ int main(int argc, char **argv)
 				break;
 
 			case 8:
+				printf("\n");
+				printf("Les champs dispnibles sont:\n");
+				printf("\t[prénom]\n");
+				printf("\t[nom]\n");
+				printf("\t[code-postal]\n");
+				printf("\t[ville]\n");
+				printf("\t[téléphone]\n");
+				printf("\t[email]\n");
+				printf("\t[profession]\n");
+				printf("Quel champ voulez-vous modifier -> ");
+				fflush( stdout );
+				scanf("%s", field);
+				printf("De quel utilisateur voulez-vous modifier le champ %s (rentrer son adresse mail) -> ", field);
+				fflush( stdout );
+				scanf("%s", user_email);
+				printf("Par quelle valeur voulez-vous remplacer l'ancienne -> ");
+				fflush( stdout );
+				scanf("%s", new_content_field);
+				modify_client_field(result_tab,user_email, field, new_content_field);
+				break;
+
+			case 9:
 				printf("\n");
 				print_entry_all(result_tab, 0);
 				printf("\n");

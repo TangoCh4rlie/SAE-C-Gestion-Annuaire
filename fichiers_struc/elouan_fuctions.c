@@ -69,8 +69,51 @@ entry **modify_client_mail(entry **tab, const char *old_email, char *new_email)
 
 	return tab;
 }
-
-entry **modify_client_field(entry **tab, const char *old_email, const char *new_email)
+//TODO toujours les pb avec les const
+entry **modify_client_field(entry **tab, const char *email, const char *field_name, char *new_var)
 {
+	int line = select_line_with_email(tab, email);
+	if (line == -1)
+		printf("L'adresse mail %s n'a pas été trouvé dans l'annuaire", email);
+	else if(stricmp(field_name, "prénom") == 0)
+	{
+		tab[line]->firstname = new_var;
+		printf("Le prénom à bien été changé par %s", new_var);
+	}
+	else if(stricmp(field_name, "nom") == 0)
+	{
+		tab[line]->lastname = new_var;
+		printf("Le nom à bien été changé par %s", new_var);
+	}
+	else if(stricmp(field_name, "code-postal") == 0)
+	{
+		tab[line]->zipcode = new_var;
+		printf("Le code postal à bien été changé par %s", new_var);
+	}
+	else if(stricmp(field_name, "ville") == 0)
+	{
+		tab[line]->city = new_var;
+		printf("La ville à bien été changé par %s", new_var);
+	}
+	else if(stricmp(field_name, "téléphone") == 0)
+	{
+		tab[line]->phone = new_var;
+		printf("Le numéro de téléphone à bien été changé par %s", new_var);
+	}
+	else if(stricmp(field_name, "email") == 0)
+	{
+		tab[line]->mail = new_var;
+		printf("Le mail à bien été changé par %s", new_var);
+	}
+	else if(stricmp(field_name, "profession") == 0)
+	{
+		tab[line]->job = new_var;
+		printf("La profession à bien été changé par %s", new_var);
+	}
+	else
+		printf("Le nom du champ renseigné n'est pas correct");
 
+
+
+	return tab;
 }
