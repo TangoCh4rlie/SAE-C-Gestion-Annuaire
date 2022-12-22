@@ -62,5 +62,5 @@ entry **parse_tab(char *filename);
 
 int **check_email_not_same(entry **tab);
 
-void write_content_new_file(FILE * fp_out, entry **result_tab);
+void write_content_new_file(entry **result_tab);
 

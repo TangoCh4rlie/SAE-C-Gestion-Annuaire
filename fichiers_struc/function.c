@@ -103,8 +103,12 @@ int **check_email_not_same(entry **tab)
 	return 0;
 }
 
-void write_content_new_file(FILE * fp_out, entry **result_tab)
+void write_content_new_file(entry **result_tab)
 {
+	FILE* fp_out;
+
+	fp_out = fopen("Sortie_test.txt", "w");
+
 	int i = 0;
 	int len = tab_length(result_tab);
 

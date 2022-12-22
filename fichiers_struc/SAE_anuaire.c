@@ -5,9 +5,7 @@
 int main(int argc, char **argv)
 {
 
-	FILE* file_out;
 
-	file_out = fopen("Sortie_test.txt", "w");
 
 
 	int length_tab;
@@ -117,7 +115,7 @@ int main(int argc, char **argv)
 				break;
 
 			case 99:
-				write_content_new_file(file_out, result_tab);
+				write_content_new_file(result_tab);
 				printf("\n");
 				printf("Fin du programme...");
 				end_program = 0;
