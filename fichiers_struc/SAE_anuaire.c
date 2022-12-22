@@ -4,12 +4,11 @@
 
 int main(int argc, char **argv)
 {
-	FILE* fp_out;
 
-	fp_out = fopen("RESULT_FILE.csv", "w");
-	if (fp_out == NULL) {
-		perror("Error opening output file");
-	}
+	FILE* file_out;
+
+	file_out = fopen("Sortie_test.txt", "w");
+
 
 	int length_tab;
 	int menu_entry;
@@ -94,7 +93,7 @@ int main(int argc, char **argv)
 				break;
 
 			case 99:
-				write_content_new_file(fp_out, length_tab, result_tab);
+				write_content_new_file(file_out, result_tab);
 				printf("\n");
 				printf("Fin du programme...");
 				end_program = 0;

@@ -103,9 +103,24 @@ int **check_email_not_same(entry **tab)
 	return 0;
 }
 
-void write_content_new_file(FILE * fp_out, int length_tab, entry **result_tab)
+void write_content_new_file(FILE * fp_out, entry **result_tab)
 {
-	fwrite(result_tab, sizeof(result_tab), length_tab, fp_out);
+	int i = 0;
+	int len = tab_length(result_tab);
+
+	do
+	{
+		fprintf(fp_out,"%s,", result_tab[i]->lastname);
+		fprintf(fp_out,"%s,", result_tab[i]->firstname);
+		fprintf(fp_out,"%s,", result_tab[i]->zipcode);
+		fprintf(fp_out,"%s,", result_tab[i]->city);
+		fprintf(fp_out,"%s,", result_tab[i]->phone);
+		fprintf(fp_out,"%s,", result_tab[i]->mail);
+		fprintf(fp_out,"%s\n", result_tab[i]->job);
+
+		i++;
+	}
+	while(i < len);
 
 	fclose(fp_out);
 }
