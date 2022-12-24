@@ -49,6 +49,8 @@ entry **modify_client_mail(entry **tab, const char *old_email, char *new_email);
 
 entry **modify_client_field(entry **tab, const char *email, const char *field_name, char *new_var);
 
+int field_filter(entry **tab, const char *field_name, char *string);
+
 
 //Fonction du function.c
 

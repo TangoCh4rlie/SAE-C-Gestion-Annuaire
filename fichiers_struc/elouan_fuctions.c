@@ -69,6 +69,7 @@ entry **modify_client_mail(entry **tab, const char *old_email, char *new_email)
 
 	return tab;
 }
+
 //TODO toujours les pb avec les const
 entry **modify_client_field(entry **tab, const char *email, const char *field_name, char *new_var)
 {
@@ -116,4 +117,76 @@ entry **modify_client_field(entry **tab, const char *email, const char *field_na
 
 
 	return tab;
+}
+
+int field_filter(entry **tab, const char *field_name, char *string)
+{
+	if(stricmp(field_name, "prénom") == 0)
+	{
+		int len = tab_length(tab);
+		printf("%d\n", len);
+		fflush(stdout);
+
+		unsigned int string_len = strlen(string);
+		printf("%d\n", string_len);
+		fflush(stdout);
+
+		entry *filtered_items[len];
+		int num_filtered_items = 0;
+
+		for (int i = 0; i < len; i++)
+		{
+			char* tmp = tab[i]->firstname;
+			unsigned int item_len = strlen(tmp);
+
+//			printf("Test 2 _____________\n");
+//			printf("%d\n", i);
+//			fflush( stdout );
+
+			for (int j = 0; j < item_len - string_len + 1; j++)
+			{
+				if (strncmp(tmp + j, string, string_len) == 0)
+				{
+					filtered_items[num_filtered_items++] = tmp[i];
+					break;
+				}
+			}
+		}
+		for (int i = 0; i < num_filtered_items; i++)
+			printf("%s\n", filtered_items[i]->firstname);
+	}
+//	else if(stricmp(field_name, "nom") == 0)
+//	{
+//		tab[line]->lastname = new_var;
+//		printf("Le nom à bien été changé par %s", new_var);
+//	}
+//	else if(stricmp(field_name, "code-postal") == 0)
+//	{
+//		tab[line]->zipcode = new_var;
+//		printf("Le code postal à bien été changé par %s", new_var);
+//	}
+//	else if(stricmp(field_name, "ville") == 0)
+//	{
+//		tab[line]->city = new_var;
+//		printf("La ville à bien été changé par %s", new_var);
+//	}
+//	else if(stricmp(field_name, "téléphone") == 0)
+//	{
+//		tab[line]->phone = new_var;
+//		printf("Le numéro de téléphone à bien été changé par %s", new_var);
+//	}
+//	else if(stricmp(field_name, "email") == 0)
+//	{
+//		tab[line]->mail = new_var;
+//		printf("Le mail à bien été changé par %s", new_var);
+//	}
+//	else if(stricmp(field_name, "profession") == 0)
+//	{
+//		tab[line]->job = new_var;
+//		printf("La profession à bien été changé par %s", new_var);
+//	}
+	else
+		printf("Le nom du champ renseigné n'est pas correct");
+
+	return 0;
 }

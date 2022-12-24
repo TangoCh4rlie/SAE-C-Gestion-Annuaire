@@ -4,10 +4,6 @@
 
 int main(int argc, char **argv)
 {
-
-
-
-
 	int length_tab;
 	int menu_entry;
 	char user_email[100];
@@ -112,6 +108,11 @@ int main(int argc, char **argv)
 				printf("\n");
 				print_entry_all(result_tab, 2);
 				printf("\n");
+				break;
+
+			case 10:
+				printf("\n");
+				field_filter(result_tab, "prénom", "cher");
 				break;
 
 			case 99:
