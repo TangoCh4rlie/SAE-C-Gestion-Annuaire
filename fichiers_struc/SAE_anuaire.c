@@ -13,6 +13,14 @@ int main(int argc, char **argv)
 	char field[11];
 	char new_content_field[100];
 
+	char firstname[100];
+	char lastname[100];
+	char zipcode[100];
+	char city[100];
+	char phone[100];
+	char mail[100];
+	char job[100];
+
     if (argc == 1)
     {
         printf("Aucun fichier n'a été renseigné\n");
@@ -114,6 +122,37 @@ int main(int argc, char **argv)
 				printf("\n");
 				field_filter(result_tab, "prénom", "cher");
 				break;
+
+			case 11:
+				//ask user information for new-line
+				printf("\n");
+				printf("Veuillez rentrer les informations de l'utilisateur à ajouter\n");
+				printf("Prénom -> ");
+				fflush( stdout );
+				scanf("%s", firstname);
+				printf("Nom -> ");
+				fflush( stdout );
+				scanf("%s", lastname);
+				printf("Code postal -> ");
+				fflush( stdout );
+				scanf("%s", zipcode);
+				printf("Ville -> ");
+				fflush( stdout );
+				scanf("%s", city);
+				printf("Téléphone -> ");
+				fflush( stdout );
+				scanf("%s", phone);
+				printf("Email -> ");
+				fflush( stdout );
+				scanf("%s", mail);
+				printf("Profession -> ");
+				fflush( stdout );
+				scanf("%s", job);
+
+				//add new line to tab
+				add_line_tab(result_tab, firstname, lastname, zipcode, city, phone, mail, job);
+				break;
+
 
 			case 99:
 				write_content_new_file(result_tab);

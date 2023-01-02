@@ -1,6 +1,8 @@
-#include "SAE_anuaire.h"
+#include "../headers/api_sae.h"
 
-entry **del_line_tab(entry **tab, char* user_email)
+//Fonction Elouan
+
+entry **supprimer_client(entry **tab, const char* user_email)
 {
 	int i;
 	int length;

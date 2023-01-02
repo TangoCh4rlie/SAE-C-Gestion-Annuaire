@@ -10,11 +10,11 @@ typedef struct entry_
 	//all criteria
 	char * lastname;
 	char * firstname;
-    char * zipcode;
-    char * city;
-    char * phone;
-    char * mail;
-    char * job;
+	char * zipcode;
+	char * city;
+	char * phone;
+	char * mail;
+	char * job;
 } entry;
 
 //Fonction du tool.c
@@ -43,28 +43,10 @@ void display_tab(entry **tab);
 
 //Fonction elouan
 
-entry **del_line_tab(entry **tab, char* user_email);
+entry **supprimer_client(entry **tab, const char* user_email);
 
 entry **modify_client_mail(entry **tab, const char *old_email, char *new_email);
 
 entry **modify_client_field(entry **tab, const char *email, const char *field_name, char *new_var);
 
 int field_filter(entry **tab, const char *field_name, char *string);
-
-entry **add_line_tab(entry **tab, char *firstname, char *lastname, char *zipcode, char *city, char *phone, char *mail, char *job);
-
-
-//Fonction du function.c
-
-char *get_string(FILE * file);
-
-entry *get_line(FILE * file);
-
-void print_entry_all(entry **to_print, int line);
-
-entry **parse_tab(char *filename);
-
-int **check_email_not_same(entry **tab);
-
-void write_content_new_file(entry **result_tab);
-
