@@ -1,15 +1,21 @@
 #include "../headers/api_sae.h"
+#include "../headers/tools.h"
+#include "../headers/lecture.h"
+#include "../headers/ecriture.h"
+
 
 //Fonction Elouan
 
-void supprimer_client(entry **tab, const char* user_email)
+void supprimer_client(char * nom_annuaire, const char* mel_p)
 {
 	int i;
 	int length;
 	int index_to_del;
 
-	index_to_del = select_line_with_email(tab,user_email);
-	length = tab_length(tab);
+    entry ** result_tab = parse_tab(nom_annuaire);
+
+	index_to_del = select_line_with_email(result_tab,mel_p);
+	length = tab_length(result_tab);
 
 	if (index_to_del == -1)
 	{

@@ -16,15 +16,7 @@ typedef struct entry_
 	char * job;
 } entry;
 
-//Fonction du tool.c
 
-int tab_length(entry **tab);
-
-entry **add_tab(entry **tab, entry *to_tab);
-
-int select_line_with_email(entry **tab, const char* email);
-
-int check_email_validity(char *email);
 
 //Fonction erwan
 
@@ -36,7 +28,7 @@ void display_tab(entry **tab);
 
 //Fonction elouan
 
-void supprimer_client(entry **tab, const char* user_email);
+void supprimer_client(char * nom_annuaire, const char* mel_p);
 
 entry **modify_client_mail(entry **tab, const char *old_email, char *new_email);
 
