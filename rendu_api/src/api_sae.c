@@ -2,7 +2,7 @@
 
 //Fonction Elouan
 
-entry **supprimer_client(entry **tab, const char* user_email)
+void supprimer_client(entry **tab, const char* user_email)
 {
 	int i;
 	int length;
@@ -14,7 +14,7 @@ entry **supprimer_client(entry **tab, const char* user_email)
 	if (index_to_del == -1)
 	{
 		printf("L'utilisateur n'a pas été trouvé");
-		return tab;
+		return;
 	}
 
 	if(index_to_del < length)
@@ -29,7 +29,7 @@ entry **supprimer_client(entry **tab, const char* user_email)
 	printf("\n");
 	printf("Ligne supprimé avec succès!");
 
-	return tab;
+	return;
 }
 
 //TODO VOIR POUR LES CONST

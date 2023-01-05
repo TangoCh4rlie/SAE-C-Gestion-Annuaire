@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#include <windows.h>
 
 typedef struct entry_
 {
@@ -23,13 +22,7 @@ int tab_length(entry **tab);
 
 entry **add_tab(entry **tab, entry *to_tab);
 
-void display_menu();
-
-void print_user_line (entry **tab, int length_tab);
-
 int select_line_with_email(entry **tab, const char* email);
-
-void Color12(int clrtxt,int clrfond);
 
 int check_email_validity(char *email);
 
@@ -43,7 +36,7 @@ void display_tab(entry **tab);
 
 //Fonction elouan
 
-entry **supprimer_client(entry **tab, const char* user_email);
+void supprimer_client(entry **tab, const char* user_email);
 
 entry **modify_client_mail(entry **tab, const char *old_email, char *new_email);
 
