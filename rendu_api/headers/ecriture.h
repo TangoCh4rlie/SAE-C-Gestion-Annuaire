@@ -1,3 +1,3 @@
 #include "api_sae.h"
 
-void write_content_new_file(entry **result_tab);
+void write_content_new_file(entry **result_tab,char * filename);

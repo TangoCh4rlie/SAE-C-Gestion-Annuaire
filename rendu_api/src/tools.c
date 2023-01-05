@@ -43,7 +43,7 @@ int select_line_with_email(entry **tab, const char* email)
 	return index_tab;
 }
 
-int check_email_validity(char *email)
+int check_email_validity(const char *email)
 {
 	int i = 0;
 	int at = 0;

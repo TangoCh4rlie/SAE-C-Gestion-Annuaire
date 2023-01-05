@@ -51,6 +51,10 @@ entry **parse_tab(char *filename)
 	entry **result_tab = NULL;
 
 	file_in = fopen(filename, "r");
+	if(!file_in) {
+		perror("File opening failed");
+		exit(EXIT_FAILURE);
+	}
 
 	do
 	{

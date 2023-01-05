@@ -12,16 +12,10 @@ void supprimer_client(char * nom_annuaire, const char* mel_p)
 	int length;
 	int index_to_del;
 
-    printf("Test");
-    fflush(stdout);
-
     entry ** result_tab = parse_tab(nom_annuaire);
 
 	index_to_del = select_line_with_email(result_tab,mel_p);
 	length = tab_length(result_tab);
-
-    printf("Test : %d",index_to_del);
-    fflush(stdout);
 
 	if (index_to_del == -1)
 	{
@@ -37,50 +31,59 @@ void supprimer_client(char * nom_annuaire, const char* mel_p)
 			result_tab[i] = result_tab[i + 1];
 		}
 		result_tab = (entry**) realloc(result_tab, sizeof(entry *) * (length - 1));
+        if (result_tab == NULL)
+        {
+            printf("Erreur d'alllocation mémoire");
+            return;
+        }
 	}
-	printf("\n");
-	printf("Ligne supprimé avec succès!");
+    printf("L'utilisateur a bien été supprimé\n");
+
+    write_content_new_file(result_tab, "resultat_supprimer.txt");
+
     free(result_tab);
 }
 
-//TODO VOIR POUR LES CONST
-entry **modify_client_mail(entry **tab, const char *old_email, char *new_email)
+void modifier_mel_client(char * nom_annuaire, const char * mel_p, const char * nv_mel_p)
 {
 	int old_email_exist;
-	int valid = check_email_validity(new_email);
+	int valid = check_email_validity(nv_mel_p);
+    entry ** result_tab = parse_tab(nom_annuaire);
 
-	old_email_exist = select_line_with_email(tab,old_email);
+	old_email_exist = select_line_with_email(result_tab,mel_p);
 
 	if (old_email_exist == -1)
 	{
 		printf("L'adresse mail sélectionné n'a pas pu être trouvé, veuillez recommencer");
-		return tab;
+		return;
 	}
-	if (select_line_with_email(tab,new_email) != -1)
+	if (select_line_with_email(result_tab,nv_mel_p) != -1)
 	{
 		printf("L'adresse mail rentré existe déjà, veuillez recommencer");
-		return tab;
+		return;
 	}
 	//TODO Faire une alocation dynamique pour la nouvelle adresse mail sinon segfault si > 100
-	if (strlen(new_email) > 100)
+	if (strlen(mel_p) > 100)
 	{
 		printf("L'adresse mail rentré est trop longue, veuillez recommencer");
-		return tab;
+		return;
 	}
 	if (valid == 0)
 	{
 		printf("L'adresse mail rentré n'est pas valide, veuillez recommencer");
-		return tab;
+		return;
 	}
 	else
 	{
 		int line_to_del;
-		line_to_del = select_line_with_email(tab, old_email);
-		tab[line_to_del]->mail = new_email;
+		line_to_del = select_line_with_email(result_tab, mel_p);
+		result_tab[line_to_del]->mail = (char*) nv_mel_p;
 		printf("L'email a bien été changé !\n");
 	}
 
-	return tab;
+    write_content_new_file(result_tab, "resultat_modifier_mel.txt");
+
+    free(result_tab);
 }
 
 //TODO toujours les pb avec les const

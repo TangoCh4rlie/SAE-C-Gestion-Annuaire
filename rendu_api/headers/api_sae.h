@@ -30,7 +30,7 @@ void display_tab(entry **tab);
 
 void supprimer_client(char * nom_annuaire, const char* mel_p);
 
-entry **modify_client_mail(entry **tab, const char *old_email, char *new_email);
+void modifier_mel_client(char * nom_annuaire, const char * mel_p, const char * nv_mel_p);
 
 entry **modify_client_field(entry **tab, const char *email, const char *field_name, char *new_var);
 

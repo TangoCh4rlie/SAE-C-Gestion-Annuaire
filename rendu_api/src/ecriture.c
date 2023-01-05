@@ -1,11 +1,11 @@
 #include "../headers/api_sae.h"
 #include "../headers/tools.h"
 
-void write_content_new_file(entry **result_tab)
+void write_content_new_file(entry **result_tab, char * filename)
 {
 	FILE* fp_out;
 
-	fp_out = fopen("Sortie_test.txt", "w");
+	fp_out = fopen(filename, "w");
 
 	int i = 0;
 	int len = tab_length(result_tab);
