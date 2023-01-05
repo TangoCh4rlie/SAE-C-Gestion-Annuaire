@@ -1,4 +1,5 @@
 #include "../headers/api_sae.h"
+#include "../headers/tools.h"
 
 void write_content_new_file(entry **result_tab)
 {

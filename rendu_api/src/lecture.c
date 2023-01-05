@@ -1,4 +1,5 @@
 #include "../headers/lecture.h"
+#include "../headers/tools.h"
 
 char *get_string(FILE * file)
 {
@@ -40,17 +41,6 @@ entry *get_line(FILE * file)
 	result_tab->job = get_string(file);
 	//si mail est NULL alors free et + NULL plus message d'erreur
 	return result_tab;                                      //créer fonction () qui check
-}
-
-void print_entry_all(entry **to_print, int line)
-{
-	printf("Nom: %s\n", to_print[line]->lastname);
-	printf("Prenom: %s\n", to_print[line]->firstname);
-	printf("Code postal: %s\n", to_print[line]->zipcode);
-	printf("Ville: %s\n", to_print[line]->city);
-	printf("Téléphone: %s\n", to_print[line]->phone);
-	printf("Mail: %s\n", to_print[line]->mail);
-	printf("Profession: %s\n", to_print[line]->job);
 }
 
 entry **parse_tab(char *filename)

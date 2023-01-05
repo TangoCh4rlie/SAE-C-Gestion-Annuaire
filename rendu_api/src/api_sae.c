@@ -12,10 +12,16 @@ void supprimer_client(char * nom_annuaire, const char* mel_p)
 	int length;
 	int index_to_del;
 
+    printf("Test");
+    fflush(stdout);
+
     entry ** result_tab = parse_tab(nom_annuaire);
 
 	index_to_del = select_line_with_email(result_tab,mel_p);
 	length = tab_length(result_tab);
+
+    printf("Test : %d",index_to_del);
+    fflush(stdout);
 
 	if (index_to_del == -1)
 	{
@@ -25,17 +31,16 @@ void supprimer_client(char * nom_annuaire, const char* mel_p)
 
 	if(index_to_del < length)
 	{
-		free(tab[index_to_del]);
+		free(result_tab[index_to_del]);
 		for(i = index_to_del; i < length - 1; i++)
 		{
-			tab[i] = tab[i + 1];
+			result_tab[i] = result_tab[i + 1];
 		}
-		tab = realloc(tab, sizeof(entry *) * (length - 1));
+		result_tab = (entry**) realloc(result_tab, sizeof(entry *) * (length - 1));
 	}
 	printf("\n");
 	printf("Ligne supprimé avec succès!");
-
-	return;
+    free(result_tab);
 }
 
 //TODO VOIR POUR LES CONST
@@ -79,65 +84,65 @@ entry **modify_client_mail(entry **tab, const char *old_email, char *new_email)
 }
 
 //TODO toujours les pb avec les const
-entry **modify_client_field(entry **tab, const char *email, const char *field_name, char *new_var)
-{
-	int line = select_line_with_email(tab, email);
-	if (line == -1)
-		printf("L'adresse mail %s n'a pas été trouvé dans l'annuaire", email);
-	else if(stricmp(field_name, "prénom") == 0)
-	{
-		tab[line]->firstname = new_var;
-		printf("Le prénom à bien été changé par %s", new_var);
-	}
-	else if(stricmp(field_name, "nom") == 0)
-	{
-		tab[line]->lastname = new_var;
-		printf("Le nom à bien été changé par %s", new_var);
-	}
-	else if(stricmp(field_name, "code-postal") == 0)
-	{
-		tab[line]->zipcode = new_var;
-		printf("Le code postal à bien été changé par %s", new_var);
-	}
-	else if(stricmp(field_name, "ville") == 0)
-	{
-		tab[line]->city = new_var;
-		printf("La ville à bien été changé par %s", new_var);
-	}
-	else if(stricmp(field_name, "téléphone") == 0)
-	{
-		tab[line]->phone = new_var;
-		printf("Le numéro de téléphone à bien été changé par %s", new_var);
-	}
-	else if(stricmp(field_name, "email") == 0)
-	{
-		tab[line]->mail = new_var;
-		printf("Le mail à bien été changé par %s", new_var);
-	}
-	else if(stricmp(field_name, "profession") == 0)
-	{
-		tab[line]->job = new_var;
-		printf("La profession à bien été changé par %s", new_var);
-	}
-	else
-		printf("Le nom du champ renseigné n'est pas correct");
-
-	return tab;
-}
-
-int field_filter(entry **tab, const char *field_name, char *string)
-{
-	if(stricmp(field_name, "prénom") == 0)
-	{
-		//generate a function to filter the tab with the firstname
-		int i;
-		int length = tab_length(tab);
-		for (i = 0; i < length; i++)
-		{
-			if (stricmp(tab[i]->firstname, string) == 0) {
-				printf("Prénom : %s", tab[i]->firstname);
-			}
-		}
+//entry **modify_client_field(entry **tab, const char *email, const char *field_name, char *new_var)
+//{
+//	int line = select_line_with_email(tab, email);
+//	if (line == -1)
+//		printf("L'adresse mail %s n'a pas été trouvé dans l'annuaire", email);
+//	else if(stricmp(field_name, "prénom") == 0)
+//	{
+//		tab[line]->firstname = new_var;
+//		printf("Le prénom à bien été changé par %s", new_var);
+//	}
+//	else if(stricmp(field_name, "nom") == 0)
+//	{
+//		tab[line]->lastname = new_var;
+//		printf("Le nom à bien été changé par %s", new_var);
+//	}
+//	else if(stricmp(field_name, "code-postal") == 0)
+//	{
+//		tab[line]->zipcode = new_var;
+//		printf("Le code postal à bien été changé par %s", new_var);
+//	}
+//	else if(stricmp(field_name, "ville") == 0)
+//	{
+//		tab[line]->city = new_var;
+//		printf("La ville à bien été changé par %s", new_var);
+//	}
+//	else if(stricmp(field_name, "téléphone") == 0)
+//	{
+//		tab[line]->phone = new_var;
+//		printf("Le numéro de téléphone à bien été changé par %s", new_var);
+//	}
+//	else if(stricmp(field_name, "email") == 0)
+//	{
+//		tab[line]->mail = new_var;
+//		printf("Le mail à bien été changé par %s", new_var);
+//	}
+//	else if(stricmp(field_name, "profession") == 0)
+//	{
+//		tab[line]->job = new_var;
+//		printf("La profession à bien été changé par %s", new_var);
+//	}
+//	else
+//		printf("Le nom du champ renseigné n'est pas correct");
+//
+//	return tab;
+//}
+//
+//int field_filter(entry **tab, const char *field_name, char *string)
+//{
+//	if(stricmp(field_name, "prénom") == 0)
+//	{
+//		//generate a function to filter the tab with the firstname
+//		int i;
+//		int length = tab_length(tab);
+//		for (i = 0; i < length; i++)
+//		{
+//			if (stricmp(tab[i]->firstname, string) == 0) {
+//				printf("Prénom : %s", tab[i]->firstname);
+//			}
+//		}
 //		int len = tab_length(tab);
 //		printf("%d\n", len);
 //		fflush( stdout );
@@ -169,7 +174,7 @@ int field_filter(entry **tab, const char *field_name, char *string)
 //		}
 //		for (int i = 0; i < num_filtered_items; i++)
 //			printf("%s\n", filtered_items[i]);
-	}
+//	}
 //	else if(stricmp(field_name, "nom") == 0)
 //	{
 //		tab[line]->lastname = new_var;
@@ -200,8 +205,8 @@ int field_filter(entry **tab, const char *field_name, char *string)
 //		tab[line]->job = new_var;
 //		printf("La profession à bien été changé par %s", new_var);
 //	}
-	else
-		printf("Le nom du champ renseigné n'est pas correct");
-
-	return 0;
-}
+//	else
+//		printf("Le nom du champ renseigné n'est pas correct");
+//
+//	return 0;
+//}
