@@ -75,3 +75,26 @@ int check_email_validity(char *email)
 
 	return 1;
 }
+
+void print_user_line (entry **tab, int length_tab)
+{
+    int user_line = 0;
+    int user_not_find = 0;
+
+    do{
+        if (user_not_find == 1)
+        {
+            printf("L'utilisateur n'a pas été trouvé");
+            printf("\n");
+        }
+
+        printf("Quel utilisateur voulez vous afficher -> ");
+        fflush( stdout );
+        scanf("%d", &user_line);
+        user_not_find = 1;
+
+    } while (user_line < 1 || user_line > length_tab);
+
+    printf("\n");
+    print_entry_all(tab, user_line - 1);
+}
