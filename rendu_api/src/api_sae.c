@@ -130,57 +130,21 @@ void modifier_autres_que_mel_client(const char * nom_annuaire, const char * mel_
 		printf("Le nom du champ renseigné n'est pas correct\n");
 
     write_content_new_file(result_tab, "resultat_modifier_autres_que_mel.txt");
+    fflush(stdout);
 
     free(result_tab);
 }
+
 //TODO Faire la fonction filtre from scratch
 //TODO verifier que le fichier est conforme pas double email et email not empty
-void field_filter(const char * nom_annuaire, const char *nom_champ, const char *val_chaine)
-{
-    entry ** result_tab = parse_tab(nom_annuaire);
-	if(strcmp(nom_champ, "prénom") == 0)
-	{
-		//generate a function to filter the result_tab with the firstname
-		int i;
-		int length = tab_length(result_tab);
-		for (i = 0; i < length; i++)
-		{
-			if (strcmp(result_tab[i]->firstname, val_chaine) == 0) {
-				printf("Prénom : %s", result_tab[i]->firstname);
-			}
-		}
-		int len = tab_length(result_tab);
-		printf("%d\n", len);
-		fflush( stdout );
 
-		unsigned int string_len = strlen(val_chaine);
-		printf("%d\n", string_len);
-		fflush( stdout );
-
-		char *filtered_items[len];
-		int num_filtered_items = 0;
-
-		for (i = 0; i < len; i++)
-		{
-			char* tmp = result_tab[i]->firstname;
-			unsigned int item_len = strlen(tmp);
-			printf("Test 2 _____________\n");
-			printf("%d\n", i);
-			fflush( stdout );
-
-			for (int j = 0; j < item_len - string_len + 1; j++)
-			{
-				if (strncmp(tmp, val_chaine, string_len) == 0)
-				{
-					filtered_items[num_filtered_items] = tmp;
-					num_filtered_items++;
-					break;
-				}
-			}
-		}
-		for (int k = 0; k < num_filtered_items; k++)
-			printf("%s\n", filtered_items[k]);
-	}
+//void field_filter(const char * nom_annuaire, const char *nom_champ, const char *val_chaine)
+//{
+//    entry ** result_tab = parse_tab(nom_annuaire);
+//	if(strcmp(nom_champ, "prénom") == 0)
+//	{
+//
+//	}
 //	else if(stricmp(field_name, "nom") == 0)
 //	{
 //		result_tab[line]->lastname = new_var;
@@ -211,8 +175,8 @@ void field_filter(const char * nom_annuaire, const char *nom_champ, const char *
 //		tab[line]->job = new_var;
 //		printf("La profession à bien été changé par %s", new_var);
 //	}
-	else
-		printf("Le nom du champ renseigné n'est pas correct");
-
-	return 0;
-}
+//	else
+//		printf("Le nom du champ renseigné n'est pas correct");
+//
+//	return 0;
+//}
