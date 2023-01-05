@@ -134,6 +134,7 @@ void modifier_autres_que_mel_client(const char * nom_annuaire, const char * mel_
     free(result_tab);
 }
 //TODO Faire la fonction filtre from scratch
+//TODO verifier que le fichier est conforme pas double email et email not empty
 void field_filter(const char * nom_annuaire, const char *nom_champ, const char *val_chaine)
 {
     entry ** result_tab = parse_tab(nom_annuaire);
