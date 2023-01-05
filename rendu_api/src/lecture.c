@@ -43,7 +43,7 @@ entry *get_line(FILE * file)
 	return result_tab;                                      //créer fonction () qui check
 }
 
-entry **parse_tab(char *filename)
+entry **parse_tab(const char *filename)
 {
 	FILE* file_in;
 

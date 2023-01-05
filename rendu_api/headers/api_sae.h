@@ -28,10 +28,10 @@ void display_tab(entry **tab);
 
 //Fonction elouan
 
-void supprimer_client(char * nom_annuaire, const char* mel_p);
+void supprimer_client(const char * nom_annuaire, const char* mel_p);
 
-void modifier_mel_client(char * nom_annuaire, const char * mel_p, const char * nv_mel_p);
+void modifier_mel_client(const char * nom_annuaire, const char * mel_p, const char * nv_mel_p);
 
-entry **modify_client_field(entry **tab, const char *email, const char *field_name, char *new_var);
+void modifier_autres_que_mel_client(const char * nom_annuaire, const char * mel_p, const char * nom_champ, const char * nv_valeur);
 
-int field_filter(entry **tab, const char *field_name, char *string);
+void field_filter(const char * nom_annuaire, const char *nom_champ, const char *val_chaine);
