@@ -12,4 +12,6 @@ int check_email_validity(const char *email);
 
 void print_user_line (entry **tab, int length_tab);
 
-void print_entry_all(entry **to_print, int line);
+void afficher_utilisateur(entry **to_print, int line);
+
+void afficher_annuaire_client(const char * nom_fichier);

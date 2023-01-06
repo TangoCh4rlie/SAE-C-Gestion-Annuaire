@@ -1,5 +1,6 @@
 #include "../headers/api_sae.h"
 #include "../headers/tools.h"
+#include "../headers/lecture.h"
 
 int tab_length(entry **tab)
 {
@@ -97,10 +98,10 @@ void print_user_line (entry **tab, int length_tab)
     } while (user_line < 1 || user_line > length_tab);
 
     printf("\n");
-    print_entry_all(tab, user_line - 1);
+    afficher_utilisateur(tab, user_line - 1);
 }
 
-void print_entry_all(entry **to_print, int line)
+void afficher_utilisateur(entry **to_print, int line)
 {
     printf("Nom: %s\n", to_print[line]->lastname);
     printf("Prenom: %s\n", to_print[line]->firstname);
@@ -109,5 +110,18 @@ void print_entry_all(entry **to_print, int line)
     printf("Téléphone: %s\n", to_print[line]->phone);
     printf("Mail: %s\n", to_print[line]->mail);
     printf("Profession: %s\n", to_print[line]->job);
+}
+
+void afficher_annuaire_client(const char * nom_fichier)
+{
+    entry **tab = NULL;
+    tab = parse_tab(nom_fichier);
+    int length_tab = tab_length(tab);
+
+    for (int i = 0; i < length_tab; i++)
+    {
+        afficher_utilisateur(tab, i);
+        printf("\n");
+    }
 }
 

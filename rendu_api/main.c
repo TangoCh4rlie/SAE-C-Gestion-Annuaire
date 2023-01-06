@@ -1,5 +1,6 @@
 #include "headers/api_sae.h"
 #include "headers/lecture.h"
+#include "headers/tools.h"
 
 int main(void)
 {
@@ -12,6 +13,7 @@ int main(void)
     fflush( stdout );
     if (menu == 1)
     {
+        afficher_annuaire_client("../annuaire.csv");
         supprimer_client("../annuaire.csv", "william.blanchard-foucher@server.fr");
         modifier_mel_client("../annuaire.csv", "william.blanchard-foucher@server.fr", "prout@gmail.com");
         modifier_autres_que_mel_client("../annuaire.csv", "william.blanchard-foucher@server.fr", "prénom", "prout");
