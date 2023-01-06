@@ -70,11 +70,10 @@ entry **parse_tab(const char *filename)
 
 //TODO Warnings lignes 94 pas compris
 
-int **check_email_not_same(entry **tab)
+int check_email_not_same(entry **tab)
 {
 	int i;
 	int j;
-	int nb_of_mail = 0;
 	int length_tab;
 
 	length_tab = tab_length(tab);
@@ -85,14 +84,44 @@ int **check_email_not_same(entry **tab)
 		j = 0;
 		while(j < length_tab)
 		{
-			if(strcmp(tab[i]->mail, tab[j]->mail) == 0 && i != j && i < j && tab[i]->mail != " " && tab[j]->mail != " ")
+			if(strcmp(tab[i]->mail, tab[j]->mail) == 0 && i != j && i < j)
 			{
 				printf("L'email %s est le meme ligne %d et ligne %d\n", tab[i]->mail, i, j);
-				nb_of_mail++;
+                exit(EXIT_FAILURE);
 			}
 			j++;
 		}
 		i++;
 	}
 	return 0;
+}
+
+//the email can't be empty and can't be the same
+void verifier_validite_annuraire_clients(const char * nom_annuaire)
+
+{
+    int i;
+    int length_tab;
+    int error;
+    entry **tab;
+
+    tab = parse_tab(nom_annuaire);
+    length_tab = tab_length(tab);
+
+    i = 0;
+    while(i < length_tab)
+    {
+        if(strcmp(tab[i]->mail, " ") == 0 || strcmp(tab[i]->mail, "") == 0)
+        {
+            printf("L'email de la ligne %d est vide\n", i);
+            error = 1;
+        }
+        i++;
+    }
+    if(error == 1)
+    {
+        printf("Le fichier n'est pas conforme\n");
+        exit(EXIT_FAILURE);
+    }
+    check_email_not_same(tab);
 }

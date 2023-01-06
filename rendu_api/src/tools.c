@@ -99,6 +99,7 @@ void print_user_line (entry **tab, int length_tab)
     printf("\n");
     print_entry_all(tab, user_line - 1);
 }
+
 void print_entry_all(entry **to_print, int line)
 {
     printf("Nom: %s\n", to_print[line]->lastname);
@@ -109,3 +110,4 @@ void print_entry_all(entry **to_print, int line)
     printf("Mail: %s\n", to_print[line]->mail);
     printf("Profession: %s\n", to_print[line]->job);
 }
+

@@ -1,4 +1,5 @@
 #include "headers/api_sae.h"
+#include "headers/lecture.h"
 
 int main(void)
 {
@@ -14,7 +15,7 @@ int main(void)
         supprimer_client("../annuaire.csv", "william.blanchard-foucher@server.fr");
         modifier_mel_client("../annuaire.csv", "william.blanchard-foucher@server.fr", "prout@gmail.com");
         modifier_autres_que_mel_client("../annuaire.csv", "william.blanchard-foucher@server.fr", "prénom", "prout");
-        ajouter_client("../annuaire.csv", "nom", "prénom", "code_postal", "ville", "telephone", "mel", "profession");
+//      ajouter_client("../annuaire.csv", "nom", "prénom", "code_postal", "ville", "telephone", "mel", "profession");
 //      field_filter("../annuaire.csv", "prénom", "cher");
     }
     else if (menu == 2)

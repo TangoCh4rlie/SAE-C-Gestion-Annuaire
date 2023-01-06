@@ -12,6 +12,8 @@ void supprimer_client(const char * nom_annuaire, const char* mel_p)
 	int length;
 	int index_to_del;
 
+    verifier_validite_annuraire_clients(nom_annuaire);
+
     entry ** result_tab = parse_tab(nom_annuaire);
 
 	index_to_del = select_line_with_email(result_tab,mel_p);
@@ -48,6 +50,9 @@ void modifier_mel_client(const char * nom_annuaire, const char * mel_p, const ch
 {
 	int old_email_exist;
 	int valid = check_email_validity(nv_mel_p);
+
+    verifier_validite_annuraire_clients(nom_annuaire);
+
     entry ** result_tab = parse_tab(nom_annuaire);
 
 	old_email_exist = select_line_with_email(result_tab,mel_p);
@@ -87,6 +92,7 @@ void modifier_mel_client(const char * nom_annuaire, const char * mel_p, const ch
 
 void modifier_autres_que_mel_client(const char * nom_annuaire, const char * mel_p, const char * nom_champ, const char * nv_valeur)
 {
+    verifier_validite_annuraire_clients(nom_annuaire);
     entry ** result_tab = parse_tab(nom_annuaire);
 	int line = select_line_with_email(result_tab, mel_p);
 	if (line == -1)
