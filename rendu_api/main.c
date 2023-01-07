@@ -14,6 +14,7 @@ int main(void)
     if (menu == 1)
     {
         afficher_annuaire_client("../annuaire.csv");
+        ajouter_client("../annuaire.csv","toto","titi","44444","lyon","000000000000","caca@gmail.com","con");
         supprimer_client("../annuaire.csv", "william.blanchard-foucher@server.fr");
         modifier_mel_client("../annuaire.csv", "william.blanchard-foucher@server.fr", "prout@gmail.com");
         modifier_autres_que_mel_client("../annuaire.csv", "william.blanchard-foucher@server.fr", "prénom", "prout");

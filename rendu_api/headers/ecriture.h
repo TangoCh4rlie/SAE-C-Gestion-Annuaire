@@ -1,3 +1,3 @@
 #include "api_sae.h"
 
-void write_content_new_file(entry **result_tab,char * filename);
+void ecriture_annuaire_clients(entry **result_tab,char * filename);

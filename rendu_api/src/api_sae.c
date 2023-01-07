@@ -41,7 +41,7 @@ void supprimer_client(const char * nom_annuaire, const char* mel_p)
 	}
     printf("L'utilisateur a bien été supprimé\n");
 
-    write_content_new_file(result_tab, "resultat_supprimer.txt");
+    ecriture_annuaire_clients(result_tab, "resultat_supprimer.txt");
 
     free(result_tab);
 }
@@ -85,7 +85,7 @@ void modifier_mel_client(const char * nom_annuaire, const char * mel_p, const ch
 		printf("L'email a bien été changé !\n");
 	}
 
-    write_content_new_file(result_tab, "resultat_modifier_mel.txt");
+    ecriture_annuaire_clients(result_tab, "resultat_modifier_mel.txt");
 
     free(result_tab);
 }
@@ -135,7 +135,7 @@ void modifier_autres_que_mel_client(const char * nom_annuaire, const char * mel_
 	else
 		printf("Le nom du champ renseigné n'est pas correct\n");
 
-    write_content_new_file(result_tab, "resultat_modifier_autres_que_mel.txt");
+    ecriture_annuaire_clients(result_tab, "resultat_modifier_autres_que_mel.txt");
     fflush(stdout);
 
     free(result_tab);
@@ -186,3 +186,24 @@ void modifier_autres_que_mel_client(const char * nom_annuaire, const char * mel_
 //
 //	return 0;
 //}
+
+void ajouter_client(const char *nom_annuaire, const char *nom_p, const char *prenom_p, const char *code_postal_p, const char *ville_p, const char *telephone_p, const char *mel_p, const char *profession_p)
+{
+    FILE * file_out;
+    entry **tab=parse_tab(nom_annuaire);
+    file_out = fopen("resultat_ajouter.txt","a");
+    fprintf(file_out,"%s,",nom_p);
+    fprintf(file_out,"%s,",prenom_p);
+    fprintf(file_out,"%s,",code_postal_p);
+    fprintf(file_out,"%s,",ville_p);
+    fprintf(file_out,"%s,",telephone_p);
+    fprintf(file_out,"%s,",mel_p);
+    fprintf(file_out,"%s,",profession_p);
+    ecriture_annuaire_clients(tab,"resultat_ajouter.txt");
+    if(check_email_validity(mel_p)==0)
+    {
+        printf("Il n'y a pas d'adresse mail, merci d'en rajouter une");
+    }
+    fclose(file_out);
+    printf("La ligne a été ajoutée avec succès !\n");
+}

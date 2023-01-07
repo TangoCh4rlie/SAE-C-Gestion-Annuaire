@@ -1,7 +1,7 @@
 #include "../headers/api_sae.h"
 #include "../headers/tools.h"
 
-void write_content_new_file(entry **result_tab, char * filename)
+void ecriture_annuaire_clients(entry **result_tab, char * filename)
 {
 	FILE* fp_out;
 
