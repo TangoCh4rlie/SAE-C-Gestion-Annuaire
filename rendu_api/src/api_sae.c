@@ -141,52 +141,7 @@ void modifier_autres_que_mel_client(const char * nom_annuaire, const char * mel_
     free(result_tab);
 }
 
-//TODO Faire la fonction filtre from scratch
-//TODO verifier que le fichier est conforme pas double email et email not empty
-
-//void field_filter(const char * nom_annuaire, const char *nom_champ, const char *val_chaine)
-//{
-//    entry ** result_tab = parse_tab(nom_annuaire);
-//	if(strcmp(nom_champ, "prénom") == 0)
-//	{
-//
-//	}
-//	else if(stricmp(field_name, "nom") == 0)
-//	{
-//		result_tab[line]->lastname = new_var;
-//		printf("Le nom à bien été changé par %s", new_var);
-//	}
-//	else if(stricmp(field_name, "code-postal") == 0)
-//	{
-//		tab[line]->zipcode = new_var;
-//		printf("Le code postal à bien été changé par %s", new_var);
-//	}
-//	else if(stricmp(field_name, "ville") == 0)
-//	{
-//		tab[line]->city = new_var;
-//		printf("La ville à bien été changé par %s", new_var);
-//	}
-//	else if(stricmp(field_name, "téléphone") == 0)
-//	{
-//		tab[line]->phone = new_var;
-//		printf("Le numéro de téléphone à bien été changé par %s", new_var);
-//	}
-//	else if(stricmp(field_name, "email") == 0)
-//	{
-//		tab[line]->mail = new_var;
-//		printf("Le mail à bien été changé par %s", new_var);
-//	}
-//	else if(stricmp(field_name, "profession") == 0)
-//	{
-//		tab[line]->job = new_var;
-//		printf("La profession à bien été changé par %s", new_var);
-//	}
-//	else
-//		printf("Le nom du champ renseigné n'est pas correct");
-//
-//	return 0;
-//}
-
+//Fonctions Erwan
 void ajouter_client(const char *nom_annuaire, const char *nom_p, const char *prenom_p, const char *code_postal_p, const char *ville_p, const char *telephone_p, const char *mel_p, const char *profession_p)
 {
     FILE * file_out;
