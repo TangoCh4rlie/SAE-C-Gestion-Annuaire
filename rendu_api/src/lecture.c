@@ -75,6 +75,7 @@ int check_email_not_same(entry **tab)
 	int i;
 	int j;
 	int length_tab;
+    int annuaire_valid = 0;
 
 	length_tab = tab_length(tab);
 
@@ -87,12 +88,20 @@ int check_email_not_same(entry **tab)
 			if(strcmp(tab[i]->mail, tab[j]->mail) == 0 && i != j && i < j)
 			{
 				printf("L'email %s est le meme ligne %d et ligne %d\n", tab[i]->mail, i, j);
-                exit(EXIT_FAILURE);
+                annuaire_valid = 1;
 			}
 			j++;
 		}
 		i++;
 	}
+    if (annuaire_valid == 0)
+        printf("L'annuaire est valide\n");
+
+    if (annuaire_valid == 1)
+    {
+        printf("L'annuaire n'est pas valide\n");
+        exit(EXIT_FAILURE);
+    }
 	return 0;
 }
 

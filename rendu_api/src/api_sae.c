@@ -173,7 +173,7 @@ void trier_clients_par_nom(char *nom_annuaire)
     printf("clients ");
     printf("ont bien été triés par ");
     printf("nom");
-    ecriture_annuaire_clients(tab,"resultat_trier_par_nom");
+    ecriture_annuaire_clients(tab,"resultat_trier_par_nom.txt");
     free(tab);
 }
 
