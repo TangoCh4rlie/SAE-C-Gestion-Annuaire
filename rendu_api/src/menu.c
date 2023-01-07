@@ -57,14 +57,14 @@ void menu_presentation(char * nom_annuraire) {
                 free(tab_for_email);
                 break;
 
-//            case 5:
-//                printf("\n");
-//                trier_clients_par_nom(nom_annuraire);
-//                break;
+            case 5:
+                printf("\n");
+                trier_clients_par_nom(nom_annuraire);
+                break;
 
             case 6:
                 printf("\n");
-                get_all_mail(result_tab);
+                printf("Cette fonctionnalité n'est pas encore disponible\n");
                 break;
 
             case 7:
@@ -75,7 +75,7 @@ void menu_presentation(char * nom_annuraire) {
                 fflush( stdout );
                 scanf("%s", new_user_email);
                 printf("\n");
-                modifier_mel_client(result_tab, user_email, new_user_email);
+                modifier_mel_client(nom_annuraire, user_email, new_user_email);
                 break;
 
             case 8:
@@ -97,18 +97,9 @@ void menu_presentation(char * nom_annuraire) {
                 printf("Par quelle valeur voulez-vous remplacer l'ancienne -> ");
                 fflush( stdout );
                 scanf("%s", new_content_field);
-                modifier_autres_que_mel_client(result_tab,user_email, field, new_content_field);
+                modifier_autres_que_mel_client(nom_annuraire,user_email, field, new_content_field);
                 break;
 
-            case 9:
-                printf("\n");
-                afficher_utilisateur(result_tab, 0);
-                printf("\n");
-                afficher_utilisateur(result_tab, 1);
-                printf("\n");
-                afficher_utilisateur(result_tab, 2);
-                printf("\n");
-                break;
 
 //            case 10:
 //                printf("\n");
@@ -142,15 +133,7 @@ void menu_presentation(char * nom_annuraire) {
                 scanf("%s", job);
 
                 //add new line to tab
-                ajouter_client(result_tab, firstname, lastname, zipcode, city, phone, mail, job);
-                break;
-
-
-            case 99:
-                ecriture_annuaire_clients(result_tab, "Fichier_toutes_les_modif");
-                printf("\n");
-                printf("Fin du programme...");
-                exit_menu = 1;
+                ajouter_client(nom_annuraire, firstname, lastname, zipcode, city, phone, mail, job);
                 break;
 
             case 12:
@@ -180,7 +163,6 @@ void affichage_menu()
     printf("| 6 : Affiche tous les mails des utilisateurs présent dans la base de donnée       |\n");
     printf("| 7 : Changer l'email d'un utilisateur                                             |\n");
     printf("| 8 : Changer le champ quelconque                                                  |\n");
-    printf("| 9 : Debug 3 first line                                                           |\n");
     printf("| 10 : Filtre                                                                      |\n");
     printf("| 11 : new line                                                                    |\n");
     printf("| 99 : Ecrire le nouvel annuaire dans un fichier (après modifications)             |\n");

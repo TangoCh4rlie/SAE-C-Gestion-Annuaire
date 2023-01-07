@@ -142,6 +142,41 @@ void modifier_autres_que_mel_client(const char * nom_annuaire, const char * mel_
 }
 
 //Fonctions Erwan
+
+void trier_clients_par_nom(char *nom_annuaire)
+{
+    entry **tab=parse_tab(nom_annuaire);
+    int i;
+    int j;
+    entry *tmp;
+    int length_tab;
+
+    length_tab = tab_length(tab);
+
+    i = 0;
+    while(i < length_tab)
+    {
+        j = 0;
+        while(j < length_tab)
+        {
+            if(strcmp(tab[i]->lastname, tab[j]->lastname) >= 1 && i != j && i < j)
+            {
+                tmp = tab[i];
+                tab[i] = tab[j];
+                tab[j] = tmp;
+            }
+            j++;
+        }
+        i++;
+    }
+    printf("Les ");
+    printf("clients ");
+    printf("ont bien été triés par ");
+    printf("nom");
+    ecriture_annuaire_clients(tab,"resultat_trier_par_nom");
+    free(tab);
+}
+
 void ajouter_client(const char *nom_annuaire, const char *nom_p, const char *prenom_p, const char *code_postal_p, const char *ville_p, const char *telephone_p, const char *mel_p, const char *profession_p)
 {
     FILE * file_out;

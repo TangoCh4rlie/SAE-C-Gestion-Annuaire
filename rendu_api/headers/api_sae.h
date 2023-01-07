@@ -21,7 +21,9 @@ typedef struct entry_
 
 char **get_all_mail(entry **tab);
 
-void **trier_clients_par_nom(entry **tab);
+void trier_clients_par_nom(char * nom_annuaire);
+
+void ajouter_client(const char *nom_annuaire, const char *nom_p, const char *prenom_p, const char *code_postal_p, const char *ville_p, const char *telephone_p, const char *mel_p, const char *profession_p);
 
 void display_tab(entry **tab);
 
@@ -58,6 +60,5 @@ void modifier_autres_que_mel_client(const char * nom_annuaire, const char * mel_
 
 //Fonction Erwan
 
-void ajouter_client(const char *nom_annuaire, const char *nom_p, const char *prenom_p, const char *code_postal_p, const char *ville_p, const char *telephone_p, const char *mel_p, const char *profession_p);
 
 //void field_filter(const char * nom_annuaire, const char *nom_champ, const char *val_chaine);
