@@ -6,8 +6,6 @@ void test_afficher_annuaire_client()
 {
     //check if the last line was corectly written
     ajouter_client("../annuaire.csv","toto","titi","44444","lyon","000000000000","caca@gmail.com","con");
-    entry **tab = parse_tab("../annuaire.csv");
-    int length_tab = tab_length(tab);
 }
 //afficher_annuaire_client("../annuaire.csv");
 //ajouter_client("../annuaire.csv","toto","titi","44444","lyon","000000000000","caca@gmail.com","con");

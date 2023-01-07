@@ -10,8 +10,6 @@ int select_line_with_email(entry **tab, const char* email);
 
 int check_email_validity(const char *email);
 
-void print_user_line (entry **tab, int length_tab);
-
 /// \brief Fonction permettant d'afficher un utilisateur
 /// \param to_print Tableau d'entrée avec les informations des l'utilisateurs
 /// \param line Ligne de l'utilisateur à afficher

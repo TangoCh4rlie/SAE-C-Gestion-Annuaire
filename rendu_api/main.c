@@ -1,6 +1,7 @@
 #include "headers/api_sae.h"
 #include "headers/lecture.h"
 #include "headers/tools.h"
+#include "headers/menu.h"
 
 int main(void)
 {
@@ -23,7 +24,11 @@ int main(void)
     }
     else if (menu == 2)
     {
-        printf("Menu");
+        char nom_annuraire[100];
+        printf("Sur quel annuaire souhaitez-vous travailler ->");
+        fflush(stdout);
+        scanf("%s", nom_annuraire);
+        menu_presentation(nom_annuraire);
     }
     else
     {

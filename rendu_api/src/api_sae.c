@@ -206,4 +206,6 @@ void ajouter_client(const char *nom_annuaire, const char *nom_p, const char *pre
     }
     fclose(file_out);
     printf("La ligne a été ajoutée avec succès !\n");
+
+    free(tab);
 }
