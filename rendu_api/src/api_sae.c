@@ -192,7 +192,7 @@ void ajouter_client(const char *nom_annuaire, const char *nom_p, const char *pre
     ecriture_annuaire_clients(tab,"resultat_ajouter.txt");
     if(check_email_validity(mel_p)==0)
     {
-        printf("Il n'y a pas d'adresse mail, merci d'en rajouter une");
+        printf("Il n'y a pas d'adresse mail, merci d'en rajouter une\n");
     }
     fclose(file_out);
     printf("La ligne a été ajoutée avec succès !\n");

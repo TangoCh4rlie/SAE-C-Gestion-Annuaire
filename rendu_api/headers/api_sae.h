@@ -21,8 +21,23 @@ typedef struct entry_
 
 char **get_all_mail(entry **tab);
 
+/// \brief Permet de trier les clients à partir de leur nom
+/// \precondition Le nom de l'annuaire doit être valide
+/// \postcondition Le fichier de sortie est composé du fichier d'entrée mais avec les lignes composant les clients triées en fonction de leur nom
+/// \param nom_annuaire Le nom de l'annuaire
 void trier_clients_par_nom(char * nom_annuaire);
 
+/// \brief Permet d'ajouter un client dans l'annuaire
+/// \precondition Le nom de l'annuaire doit être valide et mel_p ne peut pas être une chaîne vide
+/// \postcondition Le fichier de sortie est composé du fichier d'entrée + les données d'un nouveau clientssi l'adresse mail n'est pas déjà utilisé
+/// \param nom_annuaire Le nom de l'annuaire
+/// \param nom_p Le nom du nouveau client
+/// \param prenom_p Le prénom du nouveau client
+/// \param code_postal_p Le code postal du nouveau client
+/// \param ville_p La ville du nouveau client
+/// \param telephone_p Le numéro de téléphone du nouveau client
+/// \param mel_p Le mail du nouveau client
+/// \param profession_p La profession du nouveau client
 void ajouter_client(const char *nom_annuaire, const char *nom_p, const char *prenom_p, const char *code_postal_p, const char *ville_p, const char *telephone_p, const char *mel_p, const char *profession_p);
 
 void display_tab(entry **tab);
