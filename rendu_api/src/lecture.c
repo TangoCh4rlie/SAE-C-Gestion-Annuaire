@@ -133,4 +133,5 @@ void verifier_validite_annuraire_clients(const char * nom_annuaire)
         exit(EXIT_FAILURE);
     }
     check_email_not_same(tab);
+    free(tab);
 }
