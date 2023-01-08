@@ -1,0 +1,4 @@
+/snap/clion/219/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/snap/clion/219/bin/ninja/linux/ninja -G Ninja -S "/media/elouan/DATA/Documents/IUT ECOLE SUP/TAFFFFFFFF/SAE_C3/c_project_sae" -B "/media/elouan/DATA/Documents/IUT ECOLE SUP/TAFFFFFFFF/SAE_C3/c_project_sae/cmake-build-debug"
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /media/elouan/DATA/Documents/IUT ECOLE SUP/TAFFFFFFFF/SAE_C3/c_project_sae/cmake-build-debug
