@@ -129,6 +129,11 @@ void menu_presentation(char * nom_annuaire) {
                 free(tab_for_len);
                 break;
 
+            case 10:
+                printf("\n");
+                afficher_annuaire_client(nom_annuaire);
+                break;
+
             case 12:
                 printf("\n");
                 printf("Fin du programme...");
@@ -158,6 +163,7 @@ void affichage_menu()
     printf("| 7 : Filtrer un champ                                                             |\n");
     printf("| 8 : Afficher un utilisateurs                                                     |\n");
     printf("| 9 : Compter le nombre d'utilisateur dans le fichier                              |\n");
+    printf("| 10 : Afficher l'entièreté de l'annuaire                                          |\n");
     printf("| 12 : Quitter le programme                                                        |\n");
     printf("------------------------------------------------------------------------------------\n");
 }

@@ -6,7 +6,7 @@
 
 //Fonction Elouan
 
-void supprimer_client(const char * nom_annuaire, const char* mel_p)
+int supprimer_client(const char * nom_annuaire, const char* mel_p)
 {
 	int i;
 	int length;
@@ -22,7 +22,7 @@ void supprimer_client(const char * nom_annuaire, const char* mel_p)
 	if (index_to_del == -1)
 	{
 		printf("L'utilisateur n'a pas été trouvé");
-		return;
+		return 1;
 	}
 
 	if(index_to_del < length)
@@ -36,7 +36,7 @@ void supprimer_client(const char * nom_annuaire, const char* mel_p)
         if (result_tab == NULL)
         {
             printf("Erreur d'alllocation mémoire");
-            return;
+            return 1;
         }
 	}
     printf("L'utilisateur a bien été supprimé\n");
@@ -44,9 +44,11 @@ void supprimer_client(const char * nom_annuaire, const char* mel_p)
     ecriture_annuaire_clients(result_tab, "resultat_supprimer.txt");
 
     free(result_tab);
+
+    return 0;
 }
 
-void modifier_mel_client(const char * nom_annuaire, const char * mel_p, const char * nv_mel_p)
+int modifier_mel_client(const char * nom_annuaire, const char * mel_p, const char * nv_mel_p)
 {
 	int old_email_exist;
 	int valid = check_email_validity(nv_mel_p);
@@ -60,22 +62,22 @@ void modifier_mel_client(const char * nom_annuaire, const char * mel_p, const ch
 	if (old_email_exist == -1)
 	{
 		printf("L'adresse mail sélectionné n'a pas pu être trouvé, veuillez recommencer");
-		return;
+		return 1;
 	}
 	if (select_line_with_email(result_tab,nv_mel_p) != -1)
 	{
 		printf("L'adresse mail rentré existe déjà, veuillez recommencer");
-		return;
+		return 1;
 	}
 	if (strlen(mel_p) > 100)
 	{
 		printf("L'adresse mail rentré est trop longue, veuillez recommencer");
-		return;
+		return 1;
 	}
 	if (valid == 0)
 	{
 		printf("L'adresse mail rentré n'est pas valide, veuillez recommencer");
-		return;
+		return 1;
 	}
 	else
 	{
@@ -88,15 +90,21 @@ void modifier_mel_client(const char * nom_annuaire, const char * mel_p, const ch
     ecriture_annuaire_clients(result_tab, "resultat_modifier_mel.txt");
 
     free(result_tab);
+
+    return 0;
 }
 
-void modifier_autres_que_mel_client(const char * nom_annuaire, const char * mel_p, const char * nom_champ, const char * nv_valeur)
+int modifier_autres_que_mel_client(const char * nom_annuaire, const char * mel_p, const char * nom_champ, const char * nv_valeur)
 {
     verifier_validite_annuraire_clients(nom_annuaire);
     entry ** result_tab = parse_tab(nom_annuaire);
 	int line = select_line_with_email(result_tab, mel_p);
 	if (line == -1)
-		printf("L'adresse mail %s n'a pas été trouvé dans l'annuaire", mel_p);
+    {
+        printf("L'adresse mail %s n'a pas été trouvé dans l'annuaire", mel_p);
+        return 1;
+    }
+
 	else if(strcmp(nom_champ, "prénom") == 0)
 	{
 		result_tab[line]->firstname = (char*) nv_valeur;
@@ -133,17 +141,22 @@ void modifier_autres_que_mel_client(const char * nom_annuaire, const char * mel_
 		printf("La profession à bien été changé par %s", nv_valeur);
 	}
 	else
-		printf("Le nom du champ renseigné n'est pas correct\n");
+    {
+        printf("Le nom du champ renseigné n'est pas correct\n");
+        return 1;
+    }
 
     ecriture_annuaire_clients(result_tab, "resultat_modifier_autres_que_mel.txt");
     fflush(stdout);
 
     free(result_tab);
+
+    return 0;
 }
 
 //Fonctions Erwan
 
-void trier_clients_par_nom(char *nom_annuaire)
+int trier_clients_par_nom(char *nom_annuaire)
 {
     entry **tab=parse_tab(nom_annuaire);
     int i;
@@ -159,6 +172,7 @@ void trier_clients_par_nom(char *nom_annuaire)
         j = 0;
         while(j < length_tab)
         {
+            //Le stricmp n'est pas compatible avec C99
             if(strcmp(tab[i]->lastname, tab[j]->lastname) >= 1 && i != j && i < j)
             {
                 tmp = tab[i];
@@ -175,9 +189,10 @@ void trier_clients_par_nom(char *nom_annuaire)
     printf("nom");
     ecriture_annuaire_clients(tab,"resultat_trier_par_nom.txt");
     free(tab);
+    return 0;
 }
 
-void ajouter_client(const char *nom_annuaire, const char *nom_p, const char *prenom_p, const char *code_postal_p, const char *ville_p, const char *telephone_p, const char *mel_p, const char *profession_p)
+int ajouter_client(const char *nom_annuaire, const char *nom_p, const char *prenom_p, const char *code_postal_p, const char *ville_p, const char *telephone_p, const char *mel_p, const char *profession_p)
 {
     FILE * file_out;
     entry **tab=parse_tab(nom_annuaire);
@@ -193,9 +208,11 @@ void ajouter_client(const char *nom_annuaire, const char *nom_p, const char *pre
     if(check_email_validity(mel_p)==0)
     {
         printf("Il n'y a pas d'adresse mail, merci d'en rajouter une\n");
+        return 1;
     }
     fclose(file_out);
     printf("La ligne a été ajoutée avec succès !\n");
 
     free(tab);
+    return 0;
 }

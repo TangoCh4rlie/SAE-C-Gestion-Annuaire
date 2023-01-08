@@ -19,13 +19,11 @@ typedef struct entry_
 
 //Fonction erwan
 
-char **get_all_mail(entry **tab);
-
 /// \brief Permet de trier les clients à partir de leur nom
 /// \precondition Le nom de l'annuaire doit être valide
 /// \postcondition Le fichier de sortie est composé du fichier d'entrée mais avec les lignes composant les clients triées en fonction de leur nom
 /// \param nom_annuaire Le nom de l'annuaire
-void trier_clients_par_nom(char * nom_annuaire);
+int trier_clients_par_nom(char * nom_annuaire);
 
 /// \brief Permet d'ajouter un client dans l'annuaire
 /// \precondition Le nom de l'annuaire doit être valide et mel_p ne peut pas être une chaîne vide
@@ -38,9 +36,7 @@ void trier_clients_par_nom(char * nom_annuaire);
 /// \param telephone_p Le numéro de téléphone du nouveau client
 /// \param mel_p Le mail du nouveau client
 /// \param profession_p La profession du nouveau client
-void ajouter_client(const char *nom_annuaire, const char *nom_p, const char *prenom_p, const char *code_postal_p, const char *ville_p, const char *telephone_p, const char *mel_p, const char *profession_p);
-
-void display_tab(entry **tab);
+int ajouter_client(const char *nom_annuaire, const char *nom_p, const char *prenom_p, const char *code_postal_p, const char *ville_p, const char *telephone_p, const char *mel_p, const char *profession_p);
 
 //Fonction elouan
 
@@ -50,7 +46,7 @@ void display_tab(entry **tab);
 /// \postcondition Le fichier de sortie est composé de toutes les lignes du fichier d'entrée sauf celle du client à supprimer
 /// \param nom_annuaire Le nom de l'annuaire
 /// \param mel_p L'adresse mail du client à supprimer
-void supprimer_client(const char * nom_annuaire, const char* mel_p);
+int supprimer_client(const char * nom_annuaire, const char* mel_p);
 
 /// \brief Permet de modifier l'adresse mail d'un client
 /// \precondition Le nom de l'annuaire doit être valide
@@ -60,7 +56,7 @@ void supprimer_client(const char * nom_annuaire, const char* mel_p);
 /// \param nom_annuaire Le nom de l'annuaire
 /// \param mel_p L'adresse mail du client à modifier
 /// \param nv_mel_p La nouvelle adresse mail du client
-void modifier_mel_client(const char * nom_annuaire, const char * mel_p, const char * nv_mel_p);
+int modifier_mel_client(const char * nom_annuaire, const char * mel_p, const char * nv_mel_p);
 
 /// \brief Permet de modifier d'autres champ que le mail d'un client
 /// \precondition Le nom de l'annuaire doit être valide
@@ -69,11 +65,6 @@ void modifier_mel_client(const char * nom_annuaire, const char * mel_p, const ch
 /// \postcondition Le fichier de sortie est composé de toutes les lignes du fichier d'entrée avec le champ de l'utilisateur modifié
 /// \param nom_annuaire Le nom de l'annuaire
 /// \param mel_p L'adresse mail du client à modifier
-/// \param nom_champ Le nom du champ à modifier
+/// \param nom_champ Le nom du chazzzmp à modifier
 /// \param nv_champ La nouvelle valeur du champ
-void modifier_autres_que_mel_client(const char * nom_annuaire, const char * mel_p, const char * nom_champ, const char * nv_valeur);
-
-//Fonction Erwan
-
-
-//void field_filter(const char * nom_annuaire, const char *nom_champ, const char *val_chaine);
+int modifier_autres_que_mel_client(const char * nom_annuaire, const char * mel_p, const char * nom_champ, const char * nv_valeur);
