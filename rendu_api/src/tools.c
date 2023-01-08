@@ -48,7 +48,6 @@ int check_email_validity(const char *email)
 {
 	int i = 0;
 	int at = 0;
-	int dot = 0;
 	int dot_pos = 0;
 	unsigned int len = strlen(email);
 
@@ -63,7 +62,6 @@ int check_email_validity(const char *email)
 		}
 		if (email[i] == '.')
 		{
-			dot++;
 			dot_pos = i;
 		}
 		i++;
