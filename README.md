@@ -1,3 +1,5 @@
+Projet de fin de premier semestre pour l'iut Lyon 1
+
 # C_Project_SAE
 
 Faites des commits avec des nom cohérents svp :)
